@@ -63,7 +63,12 @@ def sync_daily_data(clear_existing=False):
                 'YTD_Abs': 'YTD Return',
                 '1Y_Abs': '1Y Return',
                 '3Y_Abs': '3Y Return',
-                '5Y_Abs': '5Y Return'
+                '5Y_Abs': '5Y Return',
+                '3Y_CAGR': '3Y CAGR',
+                '5Y_CAGR': '5Y CAGR',
+                '10Y_CAGR': '10Y CAGR',
+                'Inception_Abs': 'Inception Return',
+                'Inception_CAGR': 'Inception CAGR'
             }
             
             returns_data = returns_df.rename(columns=column_mapping)

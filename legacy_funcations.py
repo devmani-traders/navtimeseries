@@ -112,7 +112,22 @@ def import_returns_data(df, existing_isins=None ,clear_existing=False):
                     if not pd.isna(row.get('3Y Return')) else None,
                     'return_5y':
                     float(row.get('5Y Return', 0))
-                    if not pd.isna(row.get('5Y Return')) else None
+                    if not pd.isna(row.get('5Y Return')) else None,
+                    'return_3y_carg':
+                    float(row.get('3Y CAGR', 0))
+                    if not pd.isna(row.get('3Y CAGR')) else None,
+                    'return_5y_carg':
+                    float(row.get('5Y CAGR', 0))
+                    if not pd.isna(row.get('5Y CAGR')) else None,
+                    'return_10y_carg':
+                    float(row.get('10Y CAGR', 0))
+                    if not pd.isna(row.get('10Y CAGR')) else None,
+                    'return_since_inception':
+                    float(row.get('Inception Return', 0))
+                    if not pd.isna(row.get('Inception Return')) else None,
+                    'return_since_inception_carg':
+                    float(row.get('Inception CAGR', 0))
+                    if not pd.isna(row.get('Inception CAGR')) else None
                 }
                 returns_records.append(returns_record)
 
@@ -129,7 +144,12 @@ def import_returns_data(df, existing_isins=None ,clear_existing=False):
                               return_ytd=stmt.excluded.return_ytd,
                               return_1y=stmt.excluded.return_1y,
                               return_3y=stmt.excluded.return_3y,
-                              return_5y=stmt.excluded.return_5y))
+                              return_5y=stmt.excluded.return_5y,
+                              return_3y_carg=stmt.excluded.return_3y_carg,
+                              return_5y_carg=stmt.excluded.return_5y_carg,
+                              return_10y_carg=stmt.excluded.return_10y_carg,
+                              return_since_inception=stmt.excluded.return_since_inception,
+                              return_since_inception_carg=stmt.excluded.return_since_inception_carg))
                 db.session.execute(stmt)
                 stats['returns_created'] = len(returns_records)
 
