@@ -181,18 +181,49 @@ class NavManager:
             df.to_csv(filepath, index=False)
 ```
 
-## 🖥️ Option 2: Deploy on Google Compute Engine
+## 🖥️ Option 2: Deploy on Google Compute Engine (Budget-Friendly)
 
-### 1. Create VM Instance
+### Recommended: e2-micro Instance
+
+**Best for NAV pipeline:**
+- **e2-micro**: $6-7/month (0.25 GB RAM, shared CPU)
+- Perfect for daily cron jobs
+- Stops when idle (can schedule start/stop)
+
+### 1. Create Cheap VM Instance
 
 ```bash
+# Option A: e2-micro (Cheapest - $6-7/month)
 gcloud compute instances create nav-pipeline-vm \
     --project=$PROJECT_ID \
     --zone=asia-south1-a \
-    --machine-type=e2-medium \
+    --machine-type=e2-micro \
     --image-family=ubuntu-2204-lts \
     --image-project=ubuntu-os-cloud \
-    --boot-disk-size=50GB \
+    --boot-disk-size=20GB \
+    --boot-disk-type=pd-standard \
+    --scopes=https://www.googleapis.com/auth/cloud-platform
+
+# Option B: f1-micro (Free tier eligible - first 730 hours/month)
+# Note: Only 1 f1-micro in us-west1, us-central1, or us-east1 is free
+gcloud compute instances create nav-pipeline-vm \
+    --project=$PROJECT_ID \
+    --zone=us-central1-a \
+    --machine-type=f1-micro \
+    --image-family=ubuntu-2204-lts \
+    --image-project=ubuntu-os-cloud \
+    --boot-disk-size=20GB \
+    --boot-disk-type=pd-standard \
+    --scopes=https://www.googleapis.com/auth/cloud-platform
+
+# Option C: e2-small (Better performance - $14/month)
+gcloud compute instances create nav-pipeline-vm \
+    --project=$PROJECT_ID \
+    --zone=asia-south1-a \
+    --machine-type=e2-small \
+    --image-family=ubuntu-2204-lts \
+    --image-project=ubuntu-os-cloud \
+    --boot-disk-size=30GB \
     --boot-disk-type=pd-standard \
     --scopes=https://www.googleapis.com/auth/cloud-platform
 ```
@@ -351,45 +382,130 @@ def save_nav_data(self, df, scheme_code):
         df.to_csv(filepath, index=False)
 ```
 
-## 💰 Cost Estimation
+## 💰 Cost Estimation (Updated for Budget Options)
 
-### Monthly Costs (Approximate)
+### Monthly Costs - **CHEAPEST Setup**
 
 **Storage (Cloud Storage)**
 - 10 GB of CSV files: $0.20/month
-- Class A operations (writes): ~1000/month: $0.05
-- Class B operations (reads): ~10,000/month: $0.04
+- Operations (read/write): $0.10/month
 - **Total Storage: ~$0.30/month**
 
-**Compute Engine VM (e2-medium)**
-- VM running 24/7: ~$24/month
-- 50 GB persistent disk: ~$2/month
-- **Total Compute: ~$26/month**
+**Compute (e2-micro VM - Recommended)**
+- VM running 24/7: ~$6.50/month
+- 20 GB persistent disk: ~$0.80/month
+- **Total Compute: ~$7.30/month**
 
-**Cloud SQL**
-- Already provisioned: Existing cost
+**Grand Total: ~$7.60/month** (excluding Cloud SQL)
 
-**Total Estimated: ~$26-27/month** (excluding Cloud SQL)
+---
 
-### Cost Optimization
+### Cost Comparison Table
 
-1. **Use Preemptible VMs**: Save 60-80% on compute
-2. **Stop VM when not needed**: Only run during market hours
-3. **Use Cloud Scheduler + Functions**: Pay only for execution (~$0.10/month)
+| Option | Monthly Cost | Notes |
+|--------|-------------|-------|
+| **e2-micro** (Cheapest) | **~$7.60** | Perfect for daily jobs, 0.25 GB RAM |
+| **f1-micro** (Free tier) | **$0.30-$2** | Free if in eligible region, 0.60 GB RAM |
+| e2-small | ~$14.50 | Better performance, 2 GB RAM |
+| e2-medium | ~$26.50 | High performance, 4 GB RAM |
+| Cloud Functions | ~$0.40 | Serverless, best for infrequent runs |
 
-## 🚀 Recommended Deployment
+**Recommended: e2-micro** for best balance of cost and reliability.
 
-### For Production
+---
+
+### 🎯 Further Cost Optimization
+
+#### 1. **Use Scheduled Start/Stop**
+
+Auto-stop VM when not needed:
+
+```bash
+# Stop VM at night (11 PM)
+0 23 * * * gcloud compute instances stop nav-pipeline-vm --zone=asia-south1-a
+
+# Start VM in morning (8 AM)
+0 8 * * * gcloud compute instances start nav-pipeline-vm --zone=asia-south1-a
+```
+
+**Savings**: Run only 12 hours/day = **50% cost reduction** → $3.25/month!
+
+#### 2. **Use Preemptible VM**
+
+Save 60-80% on compute:
+
+```bash
+gcloud compute instances create nav-pipeline-vm \
+    --machine-type=e2-micro \
+    --preemptible \
+    --zone=asia-south1-a
+```
+
+**Cost**: ~$2/month (but may be terminated anytime)
+
+#### 3. **Free Tier Optimization**
+
+Use f1-micro in free tier regions:
+- Region: `us-central1`, `us-west1`, or `us-east1`
+- 1 f1-micro instance = FREE (first 730 hours/month)
+- **Cost**: $0.30/month (only storage!)
+
+#### 4. **Run Only During Market Hours**
+
+Start VM at 9 AM, stop at 7 PM:
+- Run: ~10 hours/day × 22 trading days = 220 hours/month
+- **Cost**: ~$2/month for compute + $0.30 storage = **$2.30/month**
+
+---
+
+### 🏆 **Absolute Cheapest Setup**
 
 ```
-1. Store CSV files on Cloud Storage (scalable)
-2. Use Compute Engine VM (e2-small or e2-medium)
+f1-micro VM (us-central1) + Cloud Storage
+Monthly Cost: $0.30 - $2.00
+```
+
+Setup:
+```bash
+# Create in free tier region
+gcloud compute instances create nav-pipeline-vm \
+    --zone=us-central1-a \
+    --machine-type=f1-micro \
+    --boot-disk-size=10GB \
+    --scopes=cloud-platform
+
+# Use Cloud Storage for CSV files
+# Setup daily cron at 6 PM
+```
+
+**Total Annual Cost**: ~$3.60 - $24/year 🎉
+
+## 🚀 Recommended Deployment (Budget-Friendly)
+
+### For Production - Cheapest Option
+
+```
+1. Store CSV files on Cloud Storage (scalable, $0.30/month)
+2. Use e2-micro Compute Engine VM ($6.50/month)
 3. Setup cron jobs on VM
 4. Use service account authentication
 5. Enable Cloud Logging for monitoring
+
+Total: ~$7.60/month
 ```
 
-### Deployment Steps
+### Alternative: Free Tier Setup
+
+```
+1. Store CSV files on Cloud Storage
+2. Use f1-micro VM in us-central1 (FREE)
+3. Setup cron jobs
+4. Minimize disk size (10 GB)
+
+Total: ~$0.30/month (only storage!)
+```
+
+### Deployment Steps (e2-micro)
 
 ```bash
 # 1. Create GCS bucket
@@ -397,10 +513,11 @@ gsutil mb -l asia-south1 gs://nav-timeseries-data
 
 # 2. Upload code to GitHub/Cloud Source Repositories
 
-# 3. Create VM
+# 3. Create e2-micro VM (CHEAPEST)
 gcloud compute instances create nav-pipeline-vm \
-    --machine-type=e2-medium \
+    --machine-type=e2-micro \
     --zone=asia-south1-a \
+    --boot-disk-size=20GB \
     --scopes=cloud-platform
 
 # 4. SSH and setup
@@ -421,6 +538,17 @@ crontab -e
 
 # 8. Monitor
 tail -f logs/daily_sync_*.log
+```
+
+### Deployment Steps (f1-micro - FREE)
+
+```bash
+# Same as above, but use this VM creation:
+gcloud compute instances create nav-pipeline-vm \
+    --machine-type=f1-micro \
+    --zone=us-central1-a \
+    --boot-disk-size=10GB \
+    --scopes=cloud-platform
 ```
 
 ## 📝 Configuration Summary
