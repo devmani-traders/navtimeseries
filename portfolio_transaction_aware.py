@@ -3,13 +3,16 @@ Transaction-Aware Portfolio Time Series
 
 This version uses transaction history to accurately reconstruct portfolio
 holdings on each historical date, ensuring transactions are properly reflected.
+Uses SQLAlchemy ORM for database operations.
 """
 
 import pandas as pd
 import logging
 from datetime import datetime, timedelta
-from sqlalchemy import text
+from sqlalchemy import func, case
+from sqlalchemy.dialects.postgresql import insert
 from SQL.setup_db import create_app, db
+from portfolio_models import PortfolioTimeSeries, PortfolioHoldingsSnapshot, Transaction
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -27,6 +30,7 @@ class TransactionAwarePortfolioCalculator:
     def get_holdings_on_date(self, client_code, target_date):
         """
         Reconstruct holdings as of a specific date using transaction history.
+        Uses SQLAlchemy ORM.
         
         Args:
             client_code: Client code
@@ -36,56 +40,60 @@ class TransactionAwarePortfolioCalculator:
             DataFrame with columns: isin, quantity, avg_nav, inception_date
         """
         with self.app.app_context():
-            query = """
-                WITH transaction_summary AS (
-                    SELECT 
-                        isin,
-                        folio_no,
-                        -- Calculate net quantity (buys - sells)
-                        SUM(CASE 
-                            WHEN transaction_type IN ('BUY', 'PURCHASE') THEN units
-                            WHEN transaction_type IN ('SELL', 'REDEMPTION') THEN -units
-                            ELSE 0
-                        END) as quantity,
-                        -- Calculate weighted average NAV
-                        SUM(CASE 
-                            WHEN transaction_type IN ('BUY', 'PURCHASE') THEN units * nav
-                            ELSE 0
-                        END) / NULLIF(SUM(CASE 
-                            WHEN transaction_type IN ('BUY', 'PURCHASE') THEN units
-                            ELSE 0
-                        END), 0) as avg_nav,
-                        -- Track when first bought
-                        MIN(transaction_date) as inception_date
-                    FROM transactions
-                    WHERE client_code = :client_code
-                    AND transaction_date <= :target_date
-                    GROUP BY isin, folio_no
-                    HAVING SUM(CASE 
-                        WHEN transaction_type IN ('BUY', 'PURCHASE') THEN units
-                        WHEN transaction_type IN ('SELL', 'REDEMPTION') THEN -units
-                        ELSE 0
-                    END) > 0
-                )
-                SELECT 
-                    ts.isin,
-                    mf.scheme_name,
-                    SUM(ts.quantity) as quantity,
-                    -- Weighted average across all folios
-                    SUM(ts.quantity * ts.avg_nav) / SUM(ts.quantity) as avg_nav,
-                    MIN(ts.inception_date) as inception_date
-                FROM transaction_summary ts
-                LEFT JOIN mf_fund mf ON ts.isin = mf.isin
-                GROUP BY ts.isin, mf.scheme_name
-                HAVING SUM(ts.quantity) > 0.0001  -- Handle floating point precision
-                ORDER BY ts.isin
-            """
-            
-            df = pd.read_sql(
-                text(query),
-                db.session.bind,
-                params={'client_code': client_code, 'target_date': target_date}
+            # Build query using SQLAlchemy ORM
+            buy_units = case(
+                (Transaction.transaction_type.in_(['BUY', 'PURCHASE']), Transaction.units),
+                else_=0
             )
+            
+            sell_units = case(
+                (Transaction.transaction_type.in_(['SELL', 'REDEMPTION']), Transaction.units),
+                else_=0
+            )
+            
+            buy_value = case(
+                (Transaction.transaction_type.in_(['BUY', 'PURCHASE']), Transaction.units * Transaction.nav),
+                else_=0
+            )
+            
+            # Subquery for transaction summary per folio
+            from sqlalchemy.orm import aliased
+            from SQL.data.models import Fund  # Assuming your Fund model location
+            
+            subquery = (
+                db.session.query(
+                    Transaction.isin,
+                    Transaction.folio_no,
+                    func.sum(buy_units - sell_units).label('quantity'),
+                    (func.sum(buy_value) / func.nullif(func.sum(buy_units), 0)).label('avg_nav'),
+                    func.min(Transaction.transaction_date).label('inception_date')
+                )
+                .filter(
+                    Transaction.client_code == client_code,
+                    Transaction.transaction_date <= target_date
+                )
+                .group_by(Transaction.isin, Transaction.folio_no)
+                .having(func.sum(buy_units - sell_units) > 0)
+                .subquery()
+            )
+            
+            # Aggregate across folios and join with fund details
+            query = (
+                db.session.query(
+                    subquery.c.isin,
+                    Fund.scheme_name,
+                    func.sum(subquery.c.quantity).label('quantity'),
+                    (func.sum(subquery.c.quantity * subquery.c.avg_nav) / 
+                     func.sum(subquery.c.quantity)).label('avg_nav'),
+                    func.min(subquery.c.inception_date).label('inception_date')
+                )
+                .outerjoin(Fund, subquery.c.isin == Fund.isin)
+                .group_by(subquery.c.isin, Fund.scheme_name)
+                .having(func.sum(subquery.c.quantity) > 0.0001)
+                .order_by(subquery.c.isin)
+            )
+            
+            df = pd.read_sql(query.statement, db.session.bind)
             
             logger.debug(f"Holdings on {target_date} for {client_code}: {len(df)} positions")
             return df
@@ -175,7 +183,7 @@ class TransactionAwarePortfolioCalculator:
     def update_timeseries_for_date(self, client_code, target_date):
         """
         Calculate and store portfolio time series for a specific date.
-        Uses transaction history to ensure accuracy.
+        Uses transaction history and SQLAlchemy ORM.
         """
         with self.app.app_context():
             result = self.calculate_portfolio_value_on_date(client_code, target_date)
@@ -184,24 +192,19 @@ class TransactionAwarePortfolioCalculator:
                 logger.debug(f"No portfolio value for {client_code} on {target_date}")
                 return None
             
-            # Get previous day's value for calculating change
-            prev_query = """
-                SELECT portfolio_value
-                FROM portfolio_timeseries
-                WHERE client_code = :client_code
-                AND date < :target_date
-                ORDER BY date DESC
-                LIMIT 1
-            """
-            
-            prev_result = db.session.execute(
-                text(prev_query),
-                {'client_code': client_code, 'target_date': target_date}
+            # Get previous day's value using ORM
+            prev_record = (
+                db.session.query(PortfolioTimeSeries)
+                .filter(
+                    PortfolioTimeSeries.client_code == client_code,
+                    PortfolioTimeSeries.date < target_date
+                )
+                .order_by(PortfolioTimeSeries.date.desc())
+                .first()
             )
-            prev_row = prev_result.fetchone()
             
-            if prev_row:
-                prev_value = float(prev_row[0])
+            if prev_record:
+                prev_value = float(prev_record.portfolio_value)
                 day_change = result['portfolio_value'] - prev_value
                 day_change_pct = (day_change / prev_value) * 100 if prev_value > 0 else 0
             else:
@@ -217,59 +220,55 @@ class TransactionAwarePortfolioCalculator:
             else:
                 cumulative_return_pct = None
             
-            # Upsert portfolio time series
-            upsert_query = """
-                INSERT INTO portfolio_timeseries 
-                    (client_code, date, portfolio_value, invested_value, 
-                     day_change, day_change_pct, cumulative_return_pct, 
-                     holdings_count, updated_at)
-                VALUES 
-                    (:client_code, :date, :portfolio_value, :invested_value,
-                     :day_change, :day_change_pct, :cumulative_return_pct,
-                     :holdings_count, NOW())
-                ON CONFLICT (client_code, date)
-                DO UPDATE SET
-                    portfolio_value = EXCLUDED.portfolio_value,
-                    invested_value = EXCLUDED.invested_value,
-                    day_change = EXCLUDED.day_change,
-                    day_change_pct = EXCLUDED.day_change_pct,
-                    cumulative_return_pct = EXCLUDED.cumulative_return_pct,
-                    holdings_count = EXCLUDED.holdings_count,
-                    updated_at = NOW()
-            """
+            # Upsert portfolio time series using PostgreSQL dialect
+            stmt = insert(PortfolioTimeSeries).values(
+                client_code=client_code,
+                date=target_date,
+                portfolio_value=result['portfolio_value'],
+                invested_value=result['invested_value'],
+                day_change=day_change,
+                day_change_pct=day_change_pct,
+                cumulative_return_pct=cumulative_return_pct,
+                holdings_count=result['holdings_count'],
+                updated_at=datetime.utcnow()
+            )
             
-            db.session.execute(text(upsert_query), {
-                'client_code': client_code,
-                'date': target_date,
-                'portfolio_value': result['portfolio_value'],
-                'invested_value': result['invested_value'],
-                'day_change': day_change,
-                'day_change_pct': day_change_pct,
-                'cumulative_return_pct': cumulative_return_pct,
-                'holdings_count': result['holdings_count']
-            })
+            stmt = stmt.on_conflict_do_update(
+                index_elements=['client_code', 'date'],
+                set_=dict(
+                    portfolio_value=stmt.excluded.portfolio_value,
+                    invested_value=stmt.excluded.invested_value,
+                    day_change=stmt.excluded.day_change,
+                    day_change_pct=stmt.excluded.day_change_pct,
+                    cumulative_return_pct=stmt.excluded.cumulative_return_pct,
+                    holdings_count=stmt.excluded.holdings_count,
+                    updated_at=stmt.excluded.updated_at
+                )
+            )
             
-            # Store holdings snapshot
+            db.session.execute(stmt)
+            
+            # Store holdings snapshots
             for holding in result['holdings_detail']:
-                snapshot_query = """
-                    INSERT INTO portfolio_holdings_snapshot
-                        (client_code, date, isin, quantity, nav, value)
-                    VALUES
-                        (:client_code, :date, :isin, :quantity, :nav, :value)
-                    ON CONFLICT (client_code, date, isin)
-                    DO UPDATE SET
-                        quantity = EXCLUDED.quantity,
-                        nav = EXCLUDED.nav,
-                        value = EXCLUDED.value
-                """
-                db.session.execute(text(snapshot_query), {
-                    'client_code': client_code,
-                    'date': target_date,
-                    'isin': holding['isin'],
-                    'quantity': holding['quantity'],
-                    'nav': holding['current_nav'],
-                    'value': holding['value']
-                })
+                snapshot_stmt = insert(PortfolioHoldingsSnapshot).values(
+                    client_code=client_code,
+                    date=target_date,
+                    isin=holding['isin'],
+                    quantity=holding['quantity'],
+                    nav=holding['current_nav'],
+                    value=holding['value']
+                )
+                
+                snapshot_stmt = snapshot_stmt.on_conflict_do_update(
+                    index_elements=['client_code', 'date', 'isin'],
+                    set_=dict(
+                        quantity=snapshot_stmt.excluded.quantity,
+                        nav=snapshot_stmt.excluded.nav,
+                        value=snapshot_stmt.excluded.value
+                    )
+                )
+                
+                db.session.execute(snapshot_stmt)
             
             db.session.commit()
             
@@ -283,60 +282,52 @@ class TransactionAwarePortfolioCalculator:
     def backfill_client_timeseries(self, client_code, days_back=None):
         """
         Backfill time series using transaction history.
-        Starts from first transaction date.
+        Starts from first transaction date. Uses SQLAlchemy ORM.
         
         Args:
             client_code: Client code
             days_back: Optional limit on how far back (default: from first transaction)
         """
         with self.app.app_context():
-            # Get date range
-            date_query = """
-                SELECT 
-                    MIN(transaction_date) as first_date,
-                    MAX(date) as last_nav_date
-                FROM transactions t
-                CROSS JOIN (SELECT MAX(date) as date FROM mf_nav_history) n
-                WHERE t.client_code = :client_code
-            """
+            # Get date range using ORM
+            from SQL.data.models import NavHistory
             
-            result = db.session.execute(
-                text(date_query),
-                {'client_code': client_code}
-            ).fetchone()
+            first_tx = (
+                db.session.query(func.min(Transaction.transaction_date))
+                .filter(Transaction.client_code == client_code)
+                .scalar()
+            )
             
-            if not result or not result[0]:
+            last_nav = (
+                db.session.query(func.max(NavHistory.date))
+                .scalar()
+            )
+            
+            if not first_tx:
                 logger.warning(f"No transactions for {client_code}")
                 return
             
-            start_date = result[0]
-            end_date = result[1]
+            start_date = first_tx
+            end_date = last_nav
             
             if days_back:
                 start_date = max(start_date, end_date - timedelta(days=days_back))
             
             logger.info(f"Backfilling {client_code} from {start_date} to {end_date}")
             
-            # Get all NAV dates in range
-            nav_dates_query = """
-                SELECT DISTINCT date
-                FROM mf_nav_history
-                WHERE date BETWEEN :start_date AND :end_date
-                ORDER BY date
-            """
-            
-            dates_df = pd.read_sql(
-                text(nav_dates_query),
-                db.session.bind,
-                params={'start_date': start_date, 'end_date': end_date}
+            # Get all NAV dates in range using ORM
+            nav_dates = (
+                db.session.query(NavHistory.date.distinct())
+                .filter(NavHistory.date.between(start_date, end_date))
+                .order_by(NavHistory.date)
+                .all()
             )
             
-            total_dates = len(dates_df)
+            total_dates = len(nav_dates)
             logger.info(f"Processing {total_dates} dates")
             
             success_count = 0
-            for i, row in dates_df.iterrows():
-                date = row['date']
+            for i, (date,) in enumerate(nav_dates):
                 try:
                     result = self.update_timeseries_for_date(client_code, date)
                     if result:
@@ -353,41 +344,62 @@ class TransactionAwarePortfolioCalculator:
     def verify_holdings_consistency(self, client_code):
         """
         Verify that current holdings table matches transaction history.
-        Returns discrepancies if any.
+        Returns discrepancies if any. Uses SQLAlchemy ORM.
         """
         with self.app.app_context():
-            query = """
-                WITH tx_holdings AS (
-                    SELECT 
-                        isin,
-                        SUM(CASE 
-                            WHEN transaction_type IN ('BUY', 'PURCHASE') THEN units
-                            WHEN transaction_type IN ('SELL', 'REDEMPTION') THEN -units
-                        END) as tx_quantity
-                    FROM transactions
-                    WHERE client_code = :client_code
-                    GROUP BY isin
-                ),
-                current_holdings AS (
-                    SELECT isin, quantity as current_quantity
-                    FROM holdings
-                    WHERE client_code = :client_code
-                )
-                SELECT 
-                    COALESCE(tx.isin, ch.isin) as isin,
-                    COALESCE(tx.tx_quantity, 0) as transaction_quantity,
-                    COALESCE(ch.current_quantity, 0) as holdings_quantity,
-                    ABS(COALESCE(tx.tx_quantity, 0) - COALESCE(ch.current_quantity, 0)) as diff
-                FROM tx_holdings tx
-                FULL OUTER JOIN current_holdings ch ON tx.isin = ch.isin
-                WHERE ABS(COALESCE(tx.tx_quantity, 0) - COALESCE(ch.current_quantity, 0)) > 0.0001
-            """
-            
-            df = pd.read_sql(
-                text(query),
-                db.session.bind,
-                params={'client_code': client_code}
+            # Calculate holdings from transactions
+            buy_units = case(
+                (Transaction.transaction_type.in_(['BUY', 'PURCHASE']), Transaction.units),
+                else_=0
             )
+            
+            sell_units = case(
+                (Transaction.transaction_type.in_(['SELL', 'REDEMPTION']), Transaction.units),
+                else_=0
+            )
+            
+            tx_holdings = (
+                db.session.query(
+                    Transaction.isin,
+                    func.sum(buy_units - sell_units).label('tx_quantity')
+                )
+                .filter(Transaction.client_code == client_code)
+                .group_by(Transaction.isin)
+            ).subquery()
+            
+            # Get current holdings from holdings table
+            from SQL.data.models import Holding
+            
+            current_holdings = (
+                db.session.query(
+                    Holding.isin,
+                    Holding.quantity.label('current_quantity')
+                )
+                .filter(Holding.client_code == client_code)
+            ).subquery()
+            
+            # Full outer join to find discrepancies
+            query = (
+                db.session.query(
+                    func.coalesce(tx_holdings.c.isin, current_holdings.c.isin).label('isin'),
+                    func.coalesce(tx_holdings.c.tx_quantity, 0).label('transaction_quantity'),
+                    func.coalesce(current_holdings.c.current_quantity, 0).label('holdings_quantity'),
+                    func.abs(
+                        func.coalesce(tx_holdings.c.tx_quantity, 0) - 
+                        func.coalesce(current_holdings.c.current_quantity, 0)
+                    ).label('diff')
+                )
+                .select_from(tx_holdings)
+                .outerjoin(current_holdings, tx_holdings.c.isin == current_holdings.c.isin)
+                .filter(
+                    func.abs(
+                        func.coalesce(tx_holdings.c.tx_quantity, 0) - 
+                        func.coalesce(current_holdings.c.current_quantity, 0)
+                    ) > 0.0001
+                )
+            )
+            
+            df = pd.read_sql(query.statement, db.session.bind)
             
             if df.empty:
                 logger.info(f"✓ Holdings consistent with transactions for {client_code}")
