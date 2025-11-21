@@ -48,6 +48,56 @@ if [ $? -ne 0 ]; then
 fi
 log "Database sync completed successfully"
 
+# Step 3: Generate portfolio reports (optional - uncomment if needed)
+log "Step 3: Generating portfolio reports..."
+python3 -c "
+from portfolio_calculator import PortfolioCalculator
+from sqlalchemy import text
+from SQL.setup_db import create_app, db
+import os
+
+# Create reports directory
+os.makedirs('reports', exist_ok=True)
+
+calc = PortfolioCalculator()
+
+# Get all unique client codes from holdings
+with calc.app.app_context():
+    result = db.session.execute(text('SELECT DISTINCT client_code FROM holdings WHERE quantity > 0'))
+    clients = [row[0] for row in result]
+
+print(f'Generating reports for {len(clients)} clients...')
+
+# Generate reports for each client
+for client_code in clients:
+    try:
+        # Time series
+        ts = calc.calculate_portfolio_timeseries(client_code)
+        if not ts.empty:
+            ts.to_csv(f'reports/timeseries_{client_code}.csv', index=False)
+        
+        # Monthly returns
+        monthly = calc.calculate_monthly_returns(client_code)
+        if not monthly.empty:
+            monthly.to_csv(f'reports/monthly_{client_code}.csv', index=False)
+        
+        # Holdings snapshot
+        calc.export_portfolio_report(f'reports/holdings_{client_code}.csv', client_code)
+        
+        print(f'Generated reports for {client_code}')
+    except Exception as e:
+        print(f'Error generating reports for {client_code}: {e}')
+
+print('Portfolio reports generation completed')
+" >> "$LOG_FILE" 2>&1
+
+if [ $? -ne 0 ]; then
+    log "WARNING: Portfolio report generation failed (non-critical)"
+else
+    log "Portfolio reports generated successfully"
+fi
+
+
 log "=========================================="
 log "Daily NAV Pipeline completed successfully"
 log "Log saved to: $LOG_FILE"
