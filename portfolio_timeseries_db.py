@@ -2,21 +2,23 @@
 Portfolio Time Series Database Manager
 
 Store and manage portfolio time series in database for advanced analytics.
-Provides functions to calculate, store, and query portfolio values over time.
+Uses SQLAlchemy ORM for all database operations.
 """
 
 import pandas as pd
 import logging
 from datetime import datetime, timedelta
-from sqlalchemy import text
+from sqlalchemy import func
+from sqlalchemy.dialects.postgresql import insert
 from SQL.setup_db import create_app, db
+from portfolio_models import PortfolioTimeSeries, PortfolioHoldingsSnapshot
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 
 class PortfolioTimeSeriesDB:
-    """Manage portfolio time series in database"""
+    """Manage portfolio time series in database using SQLAlchemy ORM"""
     
     def __init__(self):
         self.app = create_app()
@@ -24,6 +26,7 @@ class PortfolioTimeSeriesDB:
     def update_client_timeseries(self, client_code, date=None):
         """
         Calculate and store portfolio value for a client on a specific date.
+        Uses SQLAlchemy ORM.
         
         Args:
             client_code: Client code
@@ -32,52 +35,65 @@ class PortfolioTimeSeriesDB:
         Returns:
             dict: Portfolio value record inserted
         """
-        if date is None:
-            # Get latest NAV date
-            with self.app.app_context():
-                result = db.session.execute(text(
-                    "SELECT MAX(date) FROM mf_nav_history"
-                ))
-                date = result.scalar()
-        
         with self.app.app_context():
-            # Get holdings for this client
-            holdings_query = """
-                SELECT 
-                    h.isin,
-                    h.quantity,
-                    h.avg_nav,
-                    s.scheme_name
-                FROM holdings h
-                LEFT JOIN mf_fund s ON h.isin = s.isin
-                WHERE h.client_code = :client_code
-                AND h.quantity > 0
-            """
+            from SQL.data.models import Holding, Fund, NavHistory
             
-            holdings_df = pd.read_sql(
-                holdings_query,
-                db.session.bind,
-                params={'client_code': client_code}
+            if date is None:
+                # Get latest NAV date using ORM
+                date = db.session.query(func.max(NavHistory.date)).scalar()
+            
+            # Get holdings for this client using ORM
+            holdings_query = (
+                db.session.query(
+                    Holding.isin,
+                    Holding.quantity,
+                    Holding.avg_nav,
+                    Fund.scheme_name
+                )
+                .outerjoin(Fund, Holding.isin == Fund.isin)
+                .filter(
+                    Holding.client_code == client_code,
+                    Holding.quantity > 0
+                )
             )
+            
+            holdings_df = pd.read_sql(holdings_query.statement, db.session.bind)
             
             if holdings_df.empty:
                 logger.warning(f"No holdings for {client_code}")
                 return None
             
-            # Get NAV for each holding on this date
+            # Get latest NAV for each holding on this date using ORM
             isins = holdings_df['isin'].tolist()
-            isins_str = "','".join(isins)
             
-            nav_query = f"""
-                SELECT DISTINCT ON (isin)
-                    isin, nav, date
-                FROM mf_nav_history
-                WHERE isin IN ('{isins_str}')
-                AND date <= '{date}'
-                ORDER BY isin, date DESC
-            """
+            # Subquery to get latest NAV for each ISIN up to target date
+            nav_subquery = (
+                db.session.query(
+                    NavHistory.isin,
+                    NavHistory.nav,
+                    NavHistory.date,
+                    func.row_number().over(
+                        partition_by=NavHistory.isin,
+                        order_by=NavHistory.date.desc()
+                    ).label('rn')
+                )
+                .filter(
+                    NavHistory.isin.in_(isins),
+                    NavHistory.date <= date
+                )
+                .subquery()
+            )
             
-            nav_df = pd.read_sql(nav_query, db.session.bind)
+            nav_query = (
+                db.session.query(
+                    nav_subquery.c.isin,
+                    nav_subquery.c.nav,
+                    nav_subquery.c.date
+                )
+                .filter(nav_subquery.c.rn == 1)
+            )
+            
+            nav_df = pd.read_sql(nav_query.statement, db.session.bind)
             
             if nav_df.empty:
                 logger.warning(f"No NAV data for {client_code} on {date}")
@@ -91,7 +107,7 @@ class PortfolioTimeSeriesDB:
             for _, holding in holdings_df.iterrows():
                 isin = holding['isin']
                 quantity = float(holding['quantity'])
-                avg_nav = float(holding['avg_nav']) if holding['avg_nav'] else None
+                avg_nav = float(holding['avg_nav']) if pd.notna(holding['avg_nav']) else None
                 
                 nav_row = nav_df[nav_df['isin'] == isin]
                 if nav_row.empty:
@@ -118,56 +134,75 @@ class PortfolioTimeSeriesDB:
                 logger.warning(f"Zero portfolio value for {client_code} on {date}")
                 return None
             
-            # Get previous day's value for calculating change
-            prev_query = """
-                SELECT portfolio_value
-                FROM portfolio_timeseries
-                WHERE client_code = :client_code
-                AND date < :date
-                ORDER BY date DESC
-                LIMIT 1
-            """
-            
-            prev_result = db.session.execute(
-                text(prev_query),
-                {'client_code': client_code, 'date': date}
+            # Get previous day's value using ORM
+            prev_record = (
+                db.session.query(PortfolioTimeSeries)
+                .filter(
+                    PortfolioTimeSeries.client_code == client_code,
+                    PortfolioTimeSeries.date < date
+                )
+                .order_by(PortfolioTimeSeries.date.desc())
+                .first()
             )
-            prev_row = prev_result.fetchone()
             
-            if prev_row:
-                prev_value = float(prev_row[0])
+            if prev_record:
+                prev_value = float(prev_record.portfolio_value)
                 day_change = total_value - prev_value
                 day_change_pct = (day_change / prev_value) * 100 if prev_value > 0 else 0
             else:
                 day_change = 0
                 day_change_pct = 0
             
-            # Calculate cumulative return (if invested value available)
+            # Calculate cumulative return
             if total_invested > 0:
                 cumulative_return_pct = ((total_value - total_invested) / total_invested) * 100
             else:
                 cumulative_return_pct = None
             
-            # Insert/Update portfolio time series
-            upsert_query = """
-                INSERT INTO portfolio_timeseries 
-                    (client_code, date, portfolio_value, invested_value, 
-                     day_change, day_change_pct, cumulative_return_pct, 
-                     holdings_count, updated_at)
-                VALUES 
-                    (:client_code, :date, :portfolio_value, :invested_value,
-                     :day_change, :day_change_pct, :cumulative_return_pct,
-                     :holdings_count, NOW())
-                ON CONFLICT (client_code, date)
-                DO UPDATE SET
-                    portfolio_value = EXCLUDED.portfolio_value,
-                    invested_value = EXCLUDED.invested_value,
-                    day_change = EXCLUDED.day_change,
-                    day_change_pct = EXCLUDED.day_change_pct,
-                    cumulative_return_pct = EXCLUDED.cumulative_return_pct,
-                    holdings_count = EXCLUDED.holdings_count,
-                    updated_at = NOW()
-            """
+            # Upsert portfolio time series using PostgreSQL dialect
+            stmt = insert(PortfolioTimeSeries).values(
+                client_code=client_code,
+                date=date,
+                portfolio_value=total_value,
+                invested_value=total_invested if total_invested > 0 else None,
+                day_change=day_change,
+                day_change_pct=day_change_pct,
+                cumulative_return_pct=cumulative_return_pct,
+                holdings_count=len(holdings_snapshot),
+                updated_at=datetime.utcnow()
+            )
+            
+            stmt = stmt.on_conflict_do_update(
+                index_elements=['client_code', 'date'],
+                set_=dict(
+                    portfolio_value=stmt.excluded.portfolio_value,
+                    invested_value=stmt.excluded.invested_value,
+                    day_change=stmt.excluded.day_change,
+                    day_change_pct=stmt.excluded.day_change_pct,
+                    cumulative_return_pct=stmt.excluded.cumulative_return_pct,
+                    holdings_count=stmt.excluded.holdings_count,
+                    updated_at=stmt.excluded.updated_at
+                )
+            )
+            
+            db.session.execute(stmt)
+            
+            # Insert holdings snapshots
+            for snapshot in holdings_snapshot:
+                snapshot_stmt = insert(PortfolioHoldingsSnapshot).values(**snapshot)
+                
+                snapshot_stmt = snapshot_stmt.on_conflict_do_update(
+                    index_elements=['client_code', 'date', 'isin'],
+                    set_=dict(
+                        quantity=snapshot_stmt.excluded.quantity,
+                        nav=snapshot_stmt.excluded.nav,
+                        value=snapshot_stmt.excluded.value
+                    )
+                )
+                
+                db.session.execute(snapshot_stmt)
+            
+            db.session.commit()
             
             record = {
                 'client_code': client_code,
@@ -180,41 +215,27 @@ class PortfolioTimeSeriesDB:
                 'holdings_count': len(holdings_snapshot)
             }
             
-            db.session.execute(text(upsert_query), record)
-            
-            # Insert holdings snapshot
-            for snapshot in holdings_snapshot:
-                snapshot_query = """
-                    INSERT INTO portfolio_holdings_snapshot
-                        (client_code, date, isin, quantity, nav, value)
-                    VALUES
-                        (:client_code, :date, :isin, :quantity, :nav, :value)
-                    ON CONFLICT (client_code, date, isin)
-                    DO UPDATE SET
-                        quantity = EXCLUDED.quantity,
-                        nav = EXCLUDED.nav,
-                        value = EXCLUDED.value
-                """
-                db.session.execute(text(snapshot_query), snapshot)
-            
-            db.session.commit()
-            
             logger.info(f"Updated time series for {client_code} on {date}: ₹{total_value:,.2f}")
             return record
     
     def update_all_clients_timeseries(self, date=None):
         """
         Update portfolio time series for all clients.
+        Uses SQLAlchemy ORM.
         
         Args:
             date: Date (YYYY-MM-DD) - defaults to latest NAV date
         """
         with self.app.app_context():
-            # Get all clients with holdings
-            result = db.session.execute(text(
-                "SELECT DISTINCT client_code FROM holdings WHERE quantity > 0"
-            ))
-            clients = [row[0] for row in result]
+            from SQL.data.models import Holding
+            
+            # Get all clients with holdings using ORM
+            clients = (
+                db.session.query(Holding.client_code.distinct())
+                .filter(Holding.quantity > 0)
+                .all()
+            )
+            clients = [c[0] for c in clients]
             
             logger.info(f"Updating time series for {len(clients)} clients")
             
@@ -232,24 +253,25 @@ class PortfolioTimeSeriesDB:
     def backfill_timeseries(self, client_code, days_back=365):
         """
         Backfill historical portfolio time series.
+        Uses SQLAlchemy ORM.
         
         Args:
             client_code: Client code
             days_back: Number of days to backfill
         """
         with self.app.app_context():
-            # Get date range from NAV history
-            query = text("""
-                SELECT DISTINCT date
-                FROM mf_nav_history
-                WHERE date >= CURRENT_DATE - INTERVAL ':days days'
-                ORDER BY date
-            """)
+            from SQL.data.models import NavHistory
             
-            result = db.session.execute(
-                text(f"SELECT DISTINCT date FROM mf_nav_history WHERE date >= CURRENT_DATE - INTERVAL '{days_back} days' ORDER BY date")
+            # Get date range from NAV history using ORM
+            cutoff_date = datetime.now().date() - timedelta(days=days_back)
+            
+            dates = (
+                db.session.query(NavHistory.date.distinct())
+                .filter(NavHistory.date >= cutoff_date)
+                .order_by(NavHistory.date)
+                .all()
             )
-            dates = [row[0] for row in result]
+            dates = [d[0] for d in dates]
             
             logger.info(f"Backfilling {len(dates)} days for {client_code}")
             
@@ -266,6 +288,7 @@ class PortfolioTimeSeriesDB:
     def get_timeseries(self, client_code, days=None, start_date=None, end_date=None):
         """
         Get portfolio time series from database.
+        Uses SQLAlchemy ORM.
         
         Args:
             client_code: Client code
@@ -277,59 +300,58 @@ class PortfolioTimeSeriesDB:
             DataFrame with time series
         """
         with self.app.app_context():
-            query = """
-                SELECT 
-                    date,
-                    portfolio_value,
-                    invested_value,
-                    day_change,
-                    day_change_pct,
-                    cumulative_return_pct,
-                    holdings_count
-                FROM portfolio_timeseries
-                WHERE client_code = :client_code
-            """
-            
-            params = {'client_code': client_code}
+            query = (
+                db.session.query(
+                    PortfolioTimeSeries.date,
+                    PortfolioTimeSeries.portfolio_value,
+                    PortfolioTimeSeries.invested_value,
+                    PortfolioTimeSeries.day_change,
+                    PortfolioTimeSeries.day_change_pct,
+                    PortfolioTimeSeries.cumulative_return_pct,
+                    PortfolioTimeSeries.holdings_count
+                )
+                .filter(PortfolioTimeSeries.client_code == client_code)
+            )
             
             if days:
-                query += " AND date >= CURRENT_DATE - INTERVAL ':days days'"
-                params['days'] = days
+                cutoff = datetime.now().date() - timedelta(days=days)
+                query = query.filter(PortfolioTimeSeries.date >= cutoff)
             
             if start_date:
-                query += " AND date >= :start_date"
-                params['start_date'] = start_date
+                query = query.filter(PortfolioTimeSeries.date >= start_date)
             
             if end_date:
-                query += " AND date <= :end_date"
-                params['end_date'] = end_date
+                query = query.filter(PortfolioTimeSeries.date <= end_date)
             
-            query += " ORDER BY date"
+            query = query.order_by(PortfolioTimeSeries.date)
             
-            return pd.read_sql(text(query), db.session.bind, params=params)
+            return pd.read_sql(query.statement, db.session.bind)
     
     def get_all_clients_on_date(self, date):
-        """Get portfolio values for all clients on a specific date"""
+        """
+        Get portfolio values for all clients on a specific date.
+        Uses SQLAlchemy ORM.
+        """
         with self.app.app_context():
-            query = """
-                SELECT 
-                    client_code,
-                    portfolio_value,
-                    day_change,
-                    day_change_pct,
-                    cumulative_return_pct
-                FROM portfolio_timeseries
-                WHERE date = :date
-                ORDER BY portfolio_value DESC
-            """
+            query = (
+                db.session.query(
+                    PortfolioTimeSeries.client_code,
+                    PortfolioTimeSeries.portfolio_value,
+                    PortfolioTimeSeries.day_change,
+                    PortfolioTimeSeries.day_change_pct,
+                    PortfolioTimeSeries.cumulative_return_pct
+                )
+                .filter(PortfolioTimeSeries.date == date)
+                .order_by(PortfolioTimeSeries.portfolio_value.desc())
+            )
             
-            return pd.read_sql(text(query), db.session.bind, params={'date': date})
+            return pd.read_sql(query.statement, db.session.bind)
 
 
 if __name__ == "__main__":
     import argparse
     
-    parser = argparse.ArgumentParser(description='Portfolio Time Series Database Manager')
+    parser = argparse.ArgumentParser(description='Portfolio Time Series Database Manager (SQLAlchemy ORM)')
     parser.add_argument('--update-all', action='store_true', help='Update all clients for latest date')
     parser.add_argument('--client', type=str, help='Update specific client')
     parser.add_argument('--backfill-all', action='store_true', help='Backfill all clients')
@@ -352,11 +374,15 @@ if __name__ == "__main__":
             print(f"Day Change: ₹{record['day_change']:,.2f} ({record['day_change_pct']:.2f}%)")
     
     elif args.backfill_all:
+        from SQL.data.models import Holding
+        
         with db_manager.app.app_context():
-            result = db.session.execute(text(
-                "SELECT DISTINCT client_code FROM holdings WHERE quantity > 0"
-            ))
-            clients = [row[0] for row in result]
+            clients = (
+                db.session.query(Holding.client_code.distinct())
+                .filter(Holding.quantity > 0)
+                .all()
+            )
+            clients = [c[0] for c in clients]
         
         print(f"Backfilling {args.days} days for {len(clients)} clients...")
         for client in clients:
