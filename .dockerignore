@@ -1,0 +1,33 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# Logs
+logs/
+*.log
+
+# Local Data (Don't bake large data into image)
+data/historical_nav/
+data/returns/
+# Keep isin_master_list.csv as it's configuration
+!data/isin_master_list.csv
+
+# IDEs
+.vscode/
+.idea/
