@@ -50,6 +50,22 @@ ISIN,Scheme Name,Scheme Code
 INF174K01419,HDFC Balanced Advantage Fund,
 INF090I01239,ICICI Prudential Equity & Debt Fund,
 ```
+### 5. Generate Master List (Optional)
+Instead of manually creating the ISIN list, you can generate it by filtering for specific fund houses:
+
+```bash
+# Generate list for "Quant" funds
+python scripts/generate_master_list.py Quant
+
+# Generate list for multiple fund houses
+python scripts/generate_master_list.py Quant HDFC SBI
+
+# Generate list for compound names (use quotes)
+python scripts/generate_master_list.py "PARAG PARIKH" "Mirae Asset"
+
+# Save to a custom file
+python scripts/generate_master_list.py Quant -o data/my_list.csv
+```
 
 ## 📖 Usage
 
