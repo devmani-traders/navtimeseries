@@ -5,6 +5,7 @@ from datetime import datetime
 from app.utils.legacy import import_returns_data, import_nav_data_upsert, get_existing_isins
 from app.database.setup import create_app, db
 from app import config
+from app.utils.storage import storage
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -30,12 +31,12 @@ def sync_daily_data(clear_existing=False):
         logger.info(f"Found {len(existing_isins)} ISINs in database")
         
         returns_report_path = config.NAV_RETURNS_REPORT
-        if not os.path.exists(returns_report_path):
+        if not storage.exists(returns_report_path):
             logger.error(f"Returns report not found: {returns_report_path}")
             return
         
         try:
-            returns_df = pd.read_csv(returns_report_path)
+            returns_df = storage.read_csv(returns_report_path)
             
             # 1. Extract and sync latest NAV data
             logger.info("Syncing latest NAV data from returns report...")
@@ -113,7 +114,7 @@ def sync_historical_nav(isin_master_list_path=None, clear_existing=False):
         logger.info(f"Found {len(existing_isins)} ISINs in database")
         
         try:
-            master_df = pd.read_csv(isin_master_list_path)
+            master_df = storage.read_csv(isin_master_list_path)
         except Exception as e:
             logger.error(f"Failed to read master list: {e}")
             return
@@ -128,12 +129,15 @@ def sync_historical_nav(isin_master_list_path=None, clear_existing=False):
                 continue
             
             nav_filepath = os.path.join(config.HISTORICAL_NAV_DIR, f"{int(float(scheme_code))}.csv")
-            if not os.path.exists(nav_filepath):
+            if config.USE_GCS:
+                nav_filepath = nav_filepath.replace("\\", "/") # Ensure forward slashes for GCS
+
+            if not storage.exists(nav_filepath):
                 logger.warning(f"NAV file not found: {nav_filepath}")
                 continue
             
             try:
-                nav_df = pd.read_csv(nav_filepath)
+                nav_df = storage.read_csv(nav_filepath) 
                 nav_df['ISIN'] = isin  # Add ISIN column
                 all_nav_data.append(nav_df)
                 logger.info(f"Loaded {len(nav_df)} NAV records for {isin}")

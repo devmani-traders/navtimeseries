@@ -38,9 +38,10 @@ log "Step 1: Downloading NAVAll.txt for ISIN mapping..."
 export PYTHONPATH=$PROJECT_ROOT
 python3 -c "
 from app.services.nav_manager import NavManager
+from app import config
 manager = NavManager()
 manager.download_nav_all()
-manager.update_master_list_with_codes('data/isin_master_list.csv')
+manager.update_master_list_with_codes(config.ISIN_MASTER_LIST)
 " >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
@@ -50,7 +51,7 @@ log "ISIN mappings updated successfully"
 
 # Step 2: Download missing NAV data or use existing
 log "Step 2: Ensuring NAV data is available..."
-python3 app/main.py data/isin_master_list.csv >> "$LOG_FILE" 2>&1
+python3 -m app.main >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
     handle_error "Failed to download/update NAV data"
@@ -59,7 +60,7 @@ log "NAV data download/update completed successfully"
 
 # Step 3: Upload to database
 log "Step 3: Uploading historical NAV data to database..."
-python3 app/database/sync.py --historical >> "$LOG_FILE" 2>&1
+python3 -m app.database.sync --historical >> "$LOG_FILE" 2>&1
 
 if [ $? -ne 0 ]; then
     handle_error "Failed to upload NAV data to database"

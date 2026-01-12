@@ -31,6 +31,10 @@ RUN crontab /etc/cron.d/nav-cron
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
-# Run the command on container startup
-# -f: Foreground mode (don't daemonize) so container keeps running
-CMD ["cron", "-f"]
+# Copy entrypoint
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+# Default command
+ENTRYPOINT ["./entrypoint.sh"]
+CMD ["cron"]

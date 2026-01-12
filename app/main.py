@@ -3,6 +3,7 @@ import os
 import logging
 from app import config
 from app.services.nav_manager import NavManager
+from app.utils.storage import storage
 # from app.services.return_calculator import ReturnCalculator # To be implemented
 
 def setup_logging():
@@ -20,7 +21,7 @@ def main(master_list_path=None):
     manager = NavManager()
 
     # 1. Load and Update Master List
-    if not os.path.exists(master_list_path):
+    if not storage.exists(master_list_path):
         print(f"Error: Master list not found at {master_list_path}")
         return
 

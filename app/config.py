@@ -1,4 +1,8 @@
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Base Directory (Parent of app/)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

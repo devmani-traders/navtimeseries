@@ -1,6 +1,920 @@
 ISIN,Scheme Code,Scheme Name
-INF179K01830,100119,HDFC Balanced Advantage Fund - Growth Plan
+INF209KB1E76,146409,ADITYA BIRLA SUN LIFE BAL BHAVISHYA YOJNA REGULAR GROWTH
+INF209KB1ZC3,145481,ADITYA BIRLA SUNLIFE OVERNIGHT FUND-REGULAR PLAN-GROWTH
+INF209K01264,112088,Aditya BIRLA SUN LIFE ARBITRAGE FUND - REGULAR PLAN - GROWTH
+INF084M01AB8,131666,Aditya Birla Sun Life Balanced Advantage Fund - Regular Plan - Growth Option
+INF209K01LV0,108273,Aditya Birla Sun Life Banking & PSU Debt Fund - Regular Plan-Growth
+INF209K011W7,125595,Aditya Birla Sun Life Banking and Financial Services Fund - Regular Plan - Growth
+INF209KB12D6,149296,Aditya Birla Sun Life Business Cycle Fund-Regular-Growth
+INF209KC1399,153127,Aditya Birla Sun Life Conglomerate Fund-Regular Growth
+INF209K01447,103111,Aditya Birla Sun Life Consumption Fund-Growth Option
+INF209K01785,103178,Aditya Birla Sun Life Corporate Bond Fund - Growth - Regular Plan
+INF209K01140,103168,Aditya Birla Sun Life Digital India Fund - Growth - Regular Plan
+INF209K01405,101738,Aditya Birla Sun Life Dividend Yield Fund - Growth - Regular Plan
+INF209K01108,107745,Aditya Birla Sun Life ELSS Tax Saver Fund - Growth Option
+INF209K01BT5,103155,Aditya Birla Sun Life Equity Hybrid'95 Fund - Regular Plan-Growth
+INF209K01AJ8,103166,Aditya Birla Sun Life Flexi Cap Fund - Growth - Regular Plan
+INF209K01MG9,122644,Aditya Birla Sun Life Floating Rate Fund-Regular Plan-Growth
+INF209K01462,103309,Aditya Birla Sun Life Focused Fund -Growth Option
+INF209K01PF4,116796,Aditya Birla Sun Life Gold Fund-Growth
+INF209K01165,100033,Aditya Birla Sun Life Large & Mid Cap Fund - Regular Growth
+INF209K01BR9,103174,Aditya Birla Sun Life Large Cap Fund-Growth
+INF209K01RU9,100047,Aditya Birla Sun Life Liquid Fund - Growth
+INF209K01LQ0,103192,Aditya Birla Sun Life Low Duration Fund - Growth Plan
+INF209K01363,101592,Aditya Birla Sun Life MIDCAP Fund-Growth
+INF209KA1YH6,133513,Aditya Birla Sun Life Manufacturing Equity Fund - Regular Plan - Growth
+INF209K01603,111803,Aditya Birla Sun Life Medium Term Plan - Growth - Regular Plan
+INF209K01RV7,101976,Aditya Birla Sun Life Money Manager Fund - Growth
+INF209KB12R6,151309,Aditya Birla Sun Life Multi Asset Allocation Fund-Regular Growth
+INF209KB1Y23,148918,Aditya Birla Sun Life Multi-Cap Fund-Regular Growth
+INF209KB1O66,147846,Aditya Birla Sun Life PSU Equity Fund-Regular Plan-Growth
+INF209KC1092,152686,Aditya Birla Sun Life Quant Fund - Regular Growth
+INF209K01751,101818,Aditya Birla Sun Life Regular Savings Fund - Growth / Payment - Regular Plan
+INF209K01LZ1,101317,Aditya Birla Sun Life Savings Fund - Growth - Regular Plan
+INF209K01942,101844,Aditya Birla Sun Life Short Term Fund - Growth - Regular Plan
+INF209KB13F9,149783,Aditya Birla Sun Life Silver ETF FOF-Regular Growth
+INF209K01EN2,105804,Aditya Birla Sun Life Small Cap Fund - GROWTH
+INF209KB17X3,152161,Aditya Birla Sun Life Transportation and Logistics Fund-Regular Growth
+INF209K01LF3,108167,Aditya Birla Sun Life Value Fund - Growth Option
+INF846K01E90,144393,Axis Aggressive Hybrid Fund - Regular Plan - Growth Option
+INF846K01QC8,130771,Axis Arbitrage Fund - Regular Plan - Growth
+INF846K01A52,141644,Axis Balanced Advantage Fund - Regular Plan - Growth
+INF846K019N8,151366,Axis Business Cycles Fund - Regular Plan - Growth
+INF846K01693,112924,Axis Conservative Hybrid Fund - Regular Plan - Growth Option
+INF846K010X6,152804,Axis Consumption Fund Regular Plan - Growth
+INF846K01ZU1,141593,Axis Corporate Bond Fund - Regular Plan Growth
+INF846K01PO5,130309,Axis Credit Risk Fund - Regular Plan - Growth
+INF846K01917,115068,Axis Dynamic Bond Fund - Regular Plan - Growth Option
+INF846K01131,112323,Axis ELSS Tax Saver Fund - Regular Plan - Growth
+INF846K01VO3,135122,Axis Equity Savings Fund - Regular Plan - Growth
+INF846K01B51,141927,Axis Flexi Cap Fund - Regular Plan - Growth
+INF846K012B8,149048,Axis Floater Fund - Regular Plan - Growth
+INF846K01CH7,117560,Axis Focused Fund - Regular Plan - Growth Option
+INF846K01AX8,116471,Axis Gilt Fund - Regular Plan - Growth Option
+INF846K01X30,148486,Axis Global Equity Alpha Fund of Fund - Regular Plan - Growth Option
+INF846K01Z53,148953,Axis Global Innovation Fund of Fund - Regular Plan - Growth
+INF846K01AL3,115897,Axis Gold Fund - Regular Plan - Growth Option
+INF846K01Y62,148701,Axis Greater China Equity Fund of Fund - Regular Plan - Growth Option
+INF846K013S0,152205,Axis India Manufacturing Fund - Regular Plan - Growth
+INF846K01Y05,148631,Axis Innovation Fund - Regular Plan - Growth Option
+INF846K01J79,145112,Axis Large & Mid Cap Fund - Regular Plan - Growth
+INF846K01164,112277,Axis Large Cap Fund - Regular Plan - Growth
 INF846K01412,112210,Axis Liquid Fund - Regular Plan - Growth Option
+INF846K01354,112713,Axis Liquid Fund - Retail Plan - Growth Option
+INF846K015L0,151178,Axis Long Duration Fund - Regular Plan - Growth
+INF846K01859,114564,Axis Midcap Fund - Regular Plan - Growth
+INF846K010Z1,153085,Axis Momentum Fund - Regular Plan - Growth Option
+INF846K01R46,147568,Axis Money Market Fund - Regular Plan - Growth Option
+INF846K01768,113064,Axis Multi Asset Allocation Fund - Regular Plan - Growth Option
+INF846K014G3,149844,Axis Multi Factor Passive FoF - Regular Plan - Growth Option
+INF846K016E3,149382,Axis Multicap Fund - Regular Plan - Growth
+INF846K01S52,147665,Axis Nifty 100 Index Fund - Regular Plan - Growth Option
+INF846K016D5,149371,Axis Nifty 50 Index Fund - Regular Plan - Growth Option
+INF846K018W1,152730,Axis Nifty 500 Index Fund - Regular Plan - Growth Option
+INF846K012W4,152632,Axis Nifty Bank Index Fund - Regular Plan - Growth Option
+INF846K010S6,151787,Axis Nifty IT Index Fund - Regular Plan - Growth
+INF846K012I3,149938,Axis Nifty Midcap 50 Index Fund - Regular Plan - Growth Option
+INF846K012F9,149467,Axis Nifty Next 50 Index Fund - Regular Plan - Growth
+INF846K016H6,149896,Axis Nifty Smallcap 50 Index Fund - Regular Plan - Growth Option
+INF846KA1036,153245,Axis Nifty500 Momentum 50 Index Fund - Regular Plan - Growth Option
+INF846K012Y0,152950,Axis Nifty500 Value 50 Index Fund - Regular Plan - Growth Option
+INF846K01O23,146678,Axis Overnight Fund - Regular Plan - Growth Option
+INF846K011A2,148992,Axis Quant Fund - Regular Plan - Growth
+INF846K01T02,147823,Axis Retirement Fund - Aggressive Plan - Regular Growth
+INF846K01T85,147832,Axis Retirement Fund - Conservative Plan - Regular Growth
+INF846K01T44,147828,Axis Retirement Fund - Dynamic Plan - Regular Growth
+INF846K01644,112354,Axis Short Duration Fund - Regular Plan - Growth Option
+INF846K01594,112721,Axis Short Duration Fund - Retail Plan - Growth Option
+INF846K01K01,125350,Axis Small Cap Fund - Regular Plan - Growth
+INF846K01BP2,116894,Axis Strategic Bond Fund - Regular Plan - Growth Option
+INF846K01537,112214,Axis Treasury Advantage Fund - Regular Plan - Growth Option
+INF846K01479,112717,Axis Treasury Advantage Fund - Retail Plan - Growth Option
+INF846K015K2,150750,Axis US Specific Equity Passive FOF - Regular Plan - Growth
+INF846K013T8,152239,Axis US Specific Treasury Dynamic Debt Passive FOF - Regular Plan - Growth Option
+INF846K01G23,144759,Axis Ultra Short Duration Fund - Regular Plan Growth
+INF846K013C4,149167,Axis Value Fund - Regular Plan - Growth
+INF194K01649,108845,BANDHAN Arbitrage Fund - Regular Plan - Growth
+INF194KA1UE8,131357,BANDHAN Balanced Advantage Fund Regular Plan Growth
+INF194KB1EW3,150869,BANDHAN CRISIL IBX 90:10 SDL PLUS GILT - NOV 2026 INDEX FUND - REGULAR GROWTH
+INF194KB1EQ5,150873,BANDHAN CRISIL IBX 90:10 SDL PLUS GILT APRIL 2032 INDEX FUND - REGULAR GROWTH
+INF194KB1FC2,150890,BANDHAN CRISIL IBX 90:10 SDL PLUS GILT SEP27 INDEX FUND - REGULAR GROWTH
+INF194KB1EK8,150744,BANDHAN CRISIL IBX GILT APRIL 2026 INDEX FUND - REGULAR PLAN - GROWTH
+INF194KB1FI9,151409,BANDHAN CRISIL IBX GILT APRIL 2032 INDEX FUND - REGULAR GROWTH
+INF194KB1BS7,148790,BANDHAN CRISIL IBX Gilt April 2028 Index Fund Regular Plan-Growth
+INF194KB1BL2,148786,BANDHAN CRISIL IBX Gilt June 2027 Index Fund Regular Plan-Growth
+INF194K01RW9,112353,BANDHAN Conservative Hybrid Fund - Regular Plan - Growth
+INF194KA1L81,135914,BANDHAN Corporate Bond Fund - Regular Growth
+INF194KA1W39,140609,BANDHAN Credit Risk Fund - Regular Plan Growth
+INF194K01QG4,111524,BANDHAN Dynamic Bond Fund - Regular Plan B - Growth
+INF194K01292,111569,BANDHAN ELSS Tax Saver Fund - Regular Plan - Growth
+INF194K01581,108995,BANDHAN Equity Savings Fund - Regular Plan - Growth
+INF194KB1GE6,151818,BANDHAN FINANCIAL SERVICES FUND - REGULAR PLAN - GROWTH
+INF194KB1AP5,148705,BANDHAN FLOATER FUND  - REGULAR PLAN GROWTH
+INF194K01391,108594,BANDHAN Flexi Cap Fund - Regular Plan - Growth
+INF194K01BY9,114476,BANDHAN Infrastructure Fund - Regular Plan - Growth
+INF194K01VX9,108690,BANDHAN LIQUID Fund - Regular Plan - Growth
+INF194K01516,108799,BANDHAN Large Cap Fund - Regular Plan - Growth
+INF194K01FU8,108632,BANDHAN Low Duration Fund - Regular Plan - Growth
+INF194KB1DM6,150402,BANDHAN MIDCAP FUND - GROWTH - REGULAR PLAN
+INF194KB1CI6,149305,BANDHAN MULTI CAP FUND - GROWTH - REGULAR PLAN
+INF194K01LJ9,108756,BANDHAN Money Market Fund - Regular Plan - Growth
+INF194KB1CO4,149833,BANDHAN NIFTY 100 INDEX FUND - REGULAR PLAN - GROWTH
+INF194KB1DY1,150633,BANDHAN NIFTY100 LOW VOLATILITY 30 INDEX FUND - GROWTH - REGULAR PLAN
+INF194KB1DS3,150592,BANDHAN NIFTY200 MOMENTUM 30 INDEX FUND - GROWTH - REGULAR PLAN
+INF194K01920,112877,BANDHAN Nifty 50 Index Fund - Regular Plan - Growth
+INF194KB1HD6,152266,BANDHAN Nifty Smallcap 250 Index Fund - Regular Plan - Growth
+INF194KB1314,146187,BANDHAN Overnight Fund - Regular Plan - Growth
+INF194KB1AJ8,147944,BANDHAN SMALL CAP FUND - REGULAR PLAN GROWTH
+INF761K01DW5,143620,BANK OF INDIA Arbitrage Fund Regular Growth
+INF761K01BR9,127849,BANK OF INDIA BALANCED ADVANTAGE FUND REGULAR PLAN  GROWTH
+INF761K01397,111715,BANK OF INDIA Conservative Hybrid Fund-ECO Plan-Growth
+INF761K01462,111712,BANK OF INDIA Conservative Hybrid Fund-Regular Plan-Growth
+INF761K01157,111709,BANK OF INDIA ELSS Tax Saver -ECO Plan-Growth
+INF761K01181,111710,BANK OF INDIA ELSS Tax Saver -Regular Plan- Growth
+INF761K01FI9,148405,BANK OF INDIA Flexi Cap Fund Regular Plan -Growth
+INF761K01041,110599,BANK OF INDIA Large & Mid Cap Fund Eco Plan- Growth
+INF761K01108,110603,BANK OF INDIA Large & Mid Cap Fund Regular Plan- Growth
+INF761K01FO7,148982,BANK OF INDIA Large Cap Fund Regular Plan Growth
+INF761K01306,109254,BANK OF INDIA Liquid Fund- Regular Plan- Growth
+INF761K01DP9,139529,BANK OF INDIA MID & SMALL CAP EQUITY & DEBT FUND - REGULAR  PLAN  GROWTH
+INF761K01199,112359,BANK OF INDIA Manufacturing & Infrastructure Fund-Growth
+INF761K01EZ6,147936,BANK OF INDIA Overnight Fund Regular Plan Growth
+INF761K01579,111585,BANK OF INDIA Short Term Income Fund-Regular Plan- Growth
+INF761K01ER3,145677,BANK OF INDIA Small Cap Fund Regular Plan Growth
+INF761K01298,109269,BANK OF INDIA Ultra Short Duration Fund- Regular Plan- Growth
+INF251K01ON3,150250,BARODA BNP PARIBAS ARBITRAGE FUND- REGULAR PLAN- GROWTH OPTION
+INF251K01EP9,150235,BARODA BNP PARIBAS CORPORATE BOND FUND - Regular Plan - GROWTH OPTION
+INF251K01845,150203,BARODA BNP PARIBAS Conservative Hybrid Fund-Regular Plan-Growth Option
+INF251K01985,150156,BARODA BNP PARIBAS ELSS Tax Saver Fund - Regular - Growth Option
+INF251K01PK6,150263,BARODA BNP PARIBAS Focused Fund - Regular Plan-Growth Option
+INF251K01PQ3,150268,BARODA BNP PARIBAS India Consumption Fund - Regular Plan - Growth Option
+INF251K01894,150185,BARODA BNP PARIBAS LARGE CAP Fund- Regular Plan - Growth Option
+INF251K01DQ9,150165,BARODA BNP PARIBAS LOW DURATION FUND - Regular Plan - GROWTH OPTION
+INF251K01AW3,150209,BARODA BNP PARIBAS Mid Cap Fund - Regular Plan - Growth Option
+INF194KA1U15,140381,Bandhan Aggressive Hybrid Fund-Regular Plan Growth
+INF194K01953,112332,Bandhan Aggressive Hybrid Passive FOF - Regular Plan - Growth
+INF194K01SN6,121280,Bandhan Banking and PSU Fund - Regular Growth
+INF194K01987,112327,Bandhan Conservative Hybrid Passive FOF - Regular Plan - Growth
+INF194K01466,108592,Bandhan Focused Fund - Regular Plan - Growth
+INF194K01FA0,108753,Bandhan Gilt Fund with 10 year constant duration Fund - Regular Plan - Growth
+INF194K01524,108596,Bandhan Large & Mid Cap Fund - Regular Plan - Growth
+INF194KB1HV8,152518,Bandhan Long Duration Fund - Regular Plan - Growth
+INF194K01JU0,108728,Bandhan Medium Duration Fund - Regular Plan - Growth
+INF194K01IL1,108765,Bandhan Medium to Long Duration Fund - Regular Plan - Growth
+INF194K01AB9,112329,Bandhan Multi-Asset Passive FOF - Regular Plan - Growth
+INF194KB1IH5,152717,Bandhan Nifty Total Market Index Fund - Regular Plan - Growth
+INF194KB1GN7,152103,Bandhan Retirement Fund - Regular Plan - Growth
+INF194K01HF5,108768,Bandhan Short Duration Fund - Regular Plan - Growth
+INF194KB1CC9,149100,Bandhan US specific Equity Active FOF - GROWTH - REGULAR PLAN
+INF194K01342,108909,Bandhan Value Fund - Regular Plan - Growth
+INF761K01FU4,151445,Bank of India Multi Cap Fund Regular Plan - Growth
+INF251K01OW4,150258,Baroda BNP Paribas Aggressive Hybrid Fund- REGULAT PLAN -GROWTH OPTION
+INF251K01QQ1,150284,Baroda BNP Paribas Aqua Fund of Fund - Regular Plan Growth
+INF955L01HC4,145387,Baroda BNP Paribas Balanced Advantage Fund-Regular Plan -Growth Option
+INF955L01856,117549,Baroda BNP Paribas Banking and Financial Services Fund - Regular - Growth Option
+INF955L01KH7,149140,Baroda BNP Paribas Business Cycle Fund - Regular Plan - Growth
+INF955L01FP0,133486,Baroda BNP Paribas Credit Risk Fund -Regular-Growth Option
+INF251K01DW7,150173,Baroda BNP Paribas Dynamic Bond Fund - Regular Plan - Growth Option
+INF251K01EF0,150172,Baroda BNP Paribas Dynamic Bond Fund-Defunct Plan - Growth Option
+INF955L01II9,147494,Baroda BNP Paribas Equity Savings Fund - Regular Plan - Growth
+INF251K01QW9,150385,Baroda BNP Paribas Flexi Cap Fund - Regular Plan - Growth Option
+INF955L01450,101187,Baroda BNP Paribas GILT FUND - Regular Plan - Growth Option
+INF251K01TB7,152472,Baroda BNP Paribas Innovation Fund Regular plan - Growth Option
+INF955L01484,111704,Baroda BNP Paribas LIQUID FUND - Regular Plan - GROWTH OPTION
+INF955L01JR8,148471,Baroda BNP Paribas Large and Mid Cap Fund-Regular Plan-Growth Option
+INF955L01674,102020,Baroda BNP Paribas MULTI CAP FUND - Regular Plan - Growth Option
+INF251K01TM4,152696,Baroda BNP Paribas Manufacturing Fund - Regular Plan - Growth Option
+INF955L01HY8,147382,Baroda BNP Paribas Money Market Fund-Regular Plan - Growth
+INF251K01RC9,150863,Baroda BNP Paribas Multi Asset Fund - Regular Plan - Growth Option
+INF251K01RO4,151576,Baroda BNP Paribas NIFTY SDL December 2028 Index Fund - Regular Plan - Growth Option
+INF251K01SV7,152331,Baroda BNP Paribas Nifty 50 Index Fund - Regular Plan - Growth option
+INF251K01RI6,151279,Baroda BNP Paribas Nifty SDL December 2026 Index Fund - Regular Plan - Growth Option
+INF955L01HS0,147193,Baroda BNP Paribas Overnight Fund - Regular Plan - Growth
+INF251K01TH4,152625,Baroda BNP Paribas Retirement Fund - Regular plan - Growth option
+INF955L01153,113036,Baroda BNP Paribas Short Duration Fund - Regular Plan - Growth Option
+INF251K01SO2,152130,Baroda BNP Paribas Small Cap Fund - Regular Plan - Growth option
+INF955L01GX2,143464,Baroda BNP Paribas Ultra Short Duration Fund - Regular Plan - Growth
+INF251K01SA1,151747,Baroda BNP Paribas Value Fund - Regular Plan - Growth option
+INF760K01282,100601,CANARA ROBECO CONSERVATIVE HYBRID FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01241,112152,CANARA ROBECO CONSUMER TRENDS FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01GY6,126687,CANARA ROBECO CORPORATE BOND FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01449,111962,CANARA ROBECO DYNAMIC BOND FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01100,111722,CANARA ROBECO ELSS TAX SAVER - REGULAR PLAN - GROWTH OPTION
+INF760K01050,106166,CANARA ROBECO EQUITY HYBRID FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01019,101922,CANARA ROBECO FLEXICAP FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01AE1,100597,CANARA ROBECO GILT FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01324,101588,CANARA ROBECO INCOME FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01274,103390,CANARA ROBECO INFRASTRUCTURE FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01167,102920,CANARA ROBECO LARGE AND MID CAP FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01AR3,113221,CANARA ROBECO LARGE CAP FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01CW9,109353,CANARA ROBECO LIQUID FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01JO1,147534,CANARA ROBECO OVERNIGHT FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01795,102913,CANARA ROBECO SAVINGS FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01BM2,115077,CANARA ROBECO SHORT DURATION FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01JF9,146127,CANARA ROBECO SMALL CAP FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01DC9,109371,CANARA ROBECO ULTRA SHORT TERM FUND - REGULAR PLAN - GROWTH OPTION
+INF760K01KF7,150503,Canara Robeco Banking and PSU Debt Fund- Regular Plan- Growth Option
+INF760K01JT0,148884,Canara Robeco Focused Fund - Regular Plan - Growth Option
+INF760K01KU6,152447,Canara Robeco Manufacturing Fund - Regular Plan - Growth Option
+INF760K01KL5,150816,Canara Robeco Mid Cap Fund- Regular Plan- Growth Option
+INF760K01KR2,151821,Canara Robeco Multi Cap Fund - Regular Plan - Growth Option
+INF760K01JZ7,149088,Canara Robeco Value Fund - Regular Plan - Growth Option
+INF740K012I0,131297,DSP 10Y G-Sec Fund - Regular Plan - Growth
+INF740K01318,100081,DSP Aggressive Hybrid Fund- Regular Plan - Growth
+INF740KA1DI4,142282,DSP Arbitrage Fund - Regular - Growth
+INF740KA1UY5,153216,DSP BSE SENSEX Next 30 Index Fund - Regular - Growth
+INF740KA1TN0,152208,DSP Banking & Financial Services Fund - Regular - Growth
+INF740K01ZP6,124172,DSP Banking & PSU Debt Fund - Regular Plan - Growth
+INF740K01557,100078,DSP Bond Fund - Growth
+INF740KA1US7,153122,DSP Business Cycle Fund - Regular - Growth
+INF740KA1RY1,151327,DSP CRISIL-IBX 50:50 Gilt Plus SDL - April 2033 Index Fund - Regular - Growth
+INF740KA1JX0,144644,DSP Corporate Bond Fund - Regular - Growth
+INF740K01599,101837,DSP Credit Risk Fund - Regular Plan -Growth
+INF740K01185,104772,DSP ELSS Tax Saver Fund - Regular Plan - Growth
+INF740KA1439,136563,DSP Equity Savings Fund - Regular Plan - Growth
+INF740K01037,105875,DSP Flexi Cap Fund - Regular Plan - Growth
+INF740KA1PS7,148768,DSP Floater Fund - Regular Plan - Growth
+INF740K01532,112901,DSP Focused Fund - Regular Plan - Growth
+INF740K01615,100084,DSP Gilt Fund - Regular Plan - Growth
+INF740K01284,112126,DSP Global Clean Energy Overseas Equity Omni FoF - Regular Plan - Growth
+INF740KA1QM8,149817,DSP Global Innovation Overseas Equity Omni FoF - Regular - Growth
+INF740KA1TH2,152182,DSP Gold ETF Fund of Fund - Regular - Growth
+INF740KA1LD8,145456,DSP Healthcare Fund - Regular Plan - Growth
+INF740K01Z27,130492,DSP Income Plus Arbitrage Omni FoF - Regular Plan - Growth
+INF740K01151,102434,DSP India T.I.G.E.R. Fund - Regular Plan - Growth
+INF740K01094,103819,DSP Large & Mid Cap Fund - Regular Plan - Growth
+INF740K01243,101635,DSP Large Cap Fund - Regular Plan - Growth
+INF740K01FK9,103347,DSP Liquidity Fund - Regular Plan - Growth
+INF740K018P2,133926,DSP Low Duration Fund - Regular Plan - Growth
+INF740K01128,104481,DSP Midcap Fund - Regular Plan - Growth
+INF740KA1TB5,152053,DSP Multi Asset Allocation Fund - Regular - Growth
+INF740KA1TZ4,152307,DSP Multicap Fund - Regular - Growth
+INF740K01060,108202,DSP Natural Resources And New Energy Fund - Regular - Growth
+INF740KA1CO4,141875,DSP Nifty 50 Equal Weight Index Fund - Regular Plan - Growth
+INF740KA1MJ3,146379,DSP Nifty 50 Index Fund - Regular Plan - Growth
+INF740KA1UN8,152653,DSP Nifty Bank Index Fund - Regular - Growth
+INF740KA1QY3,150427,DSP Nifty Midcap 150 Quality 50 Index Fund - Regular - Growth
+INF740KA1MD6,146380,DSP Nifty Next 50 Index Fund - Regular Plan - Growth
+INF740KA1VK2,153347,DSP Nifty Private Bank Index Fund - Regular - Growth
+INF740KA1QS5,149968,DSP Nifty SDL Plus G-Sec Jun 2028 30:70 Index Fund - Regular - Growth
+INF740KA1SE1,151370,DSP Nifty SDL Plus G-Sec Sep 2027 50:50 Index Fund - Regular - Growth
+INF740KA1TT7,152245,DSP Nifty Smallcap250 Quality 50 Index Fund - Regular - Growth
+INF740KA1UP3,152813,DSP Nifty Top 10 Equal Weight Index Fund - Regular - Growth
+INF740KA1MB0,146061,DSP Overnight Fund - Regular Plan - Growth
+INF740KA1NN3,147303,DSP Quant Fund - Regular Plan - Growth
+INF740K01441,102448,DSP Regular Savings Fund- Regular Plan - Growth
+INF740K01714,100087,DSP Savings Fund - Regular Plan - Growth
+INF740K01656,101304,DSP Short Term Fund - Regular Plan - Growth
+INF740KA1VW7,153486,DSP Silver ETF Fund of Fund - Regular - Growth
+INF740K01797,105989,DSP Small Cap Fund - Regular - Growth
+INF740K01GK7,105669,DSP Strategic Bond Fund - Regular Plan - Growth
+INF740KA1UG2,152527,DSP US Specific Debt Passive FoF - Regular - Growth
+INF740K01LP6,117691,DSP US Specific Equity Omni FoF - Regular Plan - Growth Option
+INF740K01QQ3,104138,DSP Ultra Short Fund - Regular Plan - Growth
+INF740KA1PM0,148594,DSP Value Fund - Regular Plan - Growth
+INF740K01250,106597,DSP World Gold Mining Overseas Equity Omni FoF - Regular Plan - Growth
+INF740K01730,112293,DSP World Mining Overseas Equity Omni FoF - Regular Plan - Growth
+INF754K01202,112108,Edelweiss Aggressive Hybrid Fund - Regular Plan - Growth Option
+INF754K01EF3,130205,Edelweiss Arbitrage Fund- Regular Plan- Growth Option
+INF843K01FK1,140283,Edelweiss Banking and PSU Debt Fund - Regular Plan - Growth Option
+INF754K01PJ1,150771,Edelweiss CRISIL IBX 50:50 Gilt Plus SDL June 2027 Index Fund - Regular Plan - Growth
+INF754K01RG3,151398,Edelweiss CRISIL IBX 50:50 Gilt Plus SDL Short Duration Index fund - Regular Plan - Growth
+INF754K01517,111638,Edelweiss ELSS Tax Saver Fund - Regular Plan - Growth Option
+INF843K01HC4,140297,Edelweiss Government Securities Fund - Regular Plan - Growth Option
+INF754K01GZ6,140182,Edelweiss Liquid Fund - Regular Plan - Growth Option
+INF843K01344,140229,Edelweiss Money Market Fund - Regular Plan - Growth Option
+INF754K01RO7,151795,Edelweiss Multi Asset Allocation Fund - Regular Plan - Growth
+INF090I01AB3,106979,Franklin Asian Equity Fund - Growth Plan
+INF090I01AE7,112092,Franklin Build India Fund Growth Plan
+INF090I01817,100550,Franklin India Aggressive Hybrid Fund - Growth Plan
+INF090I01WN2,150480,Franklin India Balanced Advantage Fund- Growth
+INF090I01KO5,129006,Franklin India Banking & PSU Debt Fund - Growth
+INF090I01EA7,100948,Franklin India Conservative Hybrid Fund - Growth
+INF090I01DG6,100528,Franklin India Corporate Debt Fund - Growth
+INF090I01957,103678,Franklin India Dividend Yield Fund-Growth Plan
+INF090I01262,101656,Franklin India Dynamic Asset Allocation Active Fund of Funds-Growth
+INF090I01775,100526,Franklin India ELSS Tax Saver Fund-Growth
+INF090I01PA3,144461,Franklin India Equity Savings Fund- Growth
+INF090I01239,100520,Franklin India Flexi Cap Fund - Growth
+INF090I01LM7,101048,Franklin India Floating Rate Fund - Growth Plan
+INF090I01981,105817,Franklin India Focused Equity Fund - Growth Plan
+INF090I01CU9,100493,Franklin India Government Securities Fund - Growth
+INF090I01LE4,132987,Franklin India Income Plus Arbitrage Active Fund of Funds- Growth Plan
+INF090I01890,100484,Franklin India Index Fund- NSE Nifty 50 Index Fund - Growth
+INF090I01205,102883,Franklin India Large & Mid Cap Fund - Growth Plan
+INF090I01171,100471,Franklin India Large Cap Fund-Growth
+INF090I01BB1,100538,Franklin India Liquid Fund - Regular Plan - Growth
+INF090I01BG0,100546,Franklin India Liquid Fund - Super Institutional Plan - Growth
+INF090I01809,100473,Franklin India Mid Cap Fund-Growth
+INF090I01CA1,101357,Franklin India Money Market Fund - Growth Option
+INF090I01841,103151,Franklin India Opportunities Fund - Growth
+INF090I01SO8,147213,Franklin India Overnight fund- Growth
+INF090I01510,100536,Franklin India Retirement Fund - Growth
+INF090I01569,103360,Franklin India Small Cap Fund-Growth
+INF090I01742,100522,Franklin India Technology Fund-Growth
+INF090I01EW1,116633,Franklin U.S. Opportunities Equity Active Fund of Funds - Growth
+INF666M01FJ4,145605,Groww Aggressive Hybrid Fund (formerly known as Indiabulls Equity Hybrid Fund) - Regular Plan - Growth option
+INF666M01HP7,152274,Groww Banking & Financial Services Fund - Regular - Growth
+INF666M01ES8,145590,Groww Dynamic Bond Fund (formerly known as Indiabulls Dynamic Bond Fund) - Regular Plan - Growth option
+INF666M01DN1,141862,Groww ELSS Tax Saver Fund (formerly known as Indiabulls Tax Savings Fund)-Regular Plan-Growth Option
+INF666M01JA5,153006,Groww Gold ETF FOF - REGULAR - GROWTH
+INF666M01162,116547,Groww Largecap Fund (formerly known as Indiabulls Blue Chip Fund) - Regular Plan- Growth Option
+INF666M01014,115991,Groww Liquid Fund (formerly known as Indiabulls Liquid Fund) - Regular Plan - Growth Option
+INF666M01JT5,153342,Groww Nifty 200 ETF FOF - Regular - Growth
+INF666M01KC9,153456,Groww Nifty 500 Momentum 50 ETF FOF - Regular Plan- Growth
+INF666M01II0,152773,Groww Nifty EV & New Age Automotive ETF FOF - Regular Plan - Growth
+INF666M01IT7,152927,Groww Nifty India Defence ETF FOF - Regular - Growth
+INF666M01JN8,153232,Groww Nifty India Railways PSU Index Fund - Regular Plan - Growth
+INF666M01IB5,152633,Groww Nifty Non-Cyclical Consumer Index Fund - Regular Plan - Growth
+INF666M01HJ0,152127,Groww Nifty Total Market Index Fund - Regular Plan - Growth
+INF666M01GT1,147454,Groww Overnight Fund (formerly known as Indiabulls Overnight Fund)- Regular Plan- Growth Option
+INF666M01AJ5,123708,Groww Short Duration Fund (formerly known as Indiabulls Short Term Fund )- Regular Plan - Growth Option
+INF666M01KX5,153527,Groww Silver ETF FOF - Regular - Growth
+INF666M01BH7,135343,Groww Value Fund (formerly known as Indiabulls Value Fund) - Regular Plan - Growth Option
+INF179K01319,106796,HDFC ARBITRAGE FUND - Retail Growth Option
+INF179K01343,106793,HDFC ARBITRAGE FUND - Wholesale Growth Option
+INF179KC1EZ4,151376,HDFC BSE 500 ETF - Growth Option
+INF179KC1GH7,151729,HDFC BSE 500 Index Fund - Regular Plan - Growth Option
+INF179K01LA9,101281,HDFC BSE Sensex Index Fund - Growth Plan
+INF179K01830,100119,HDFC Balanced Advantage Fund - Growth Plan
+INF179KC1BJ4,148987,HDFC Banking & Financial Services Fund - Growth Option
+INF179KA1JC4,128628,HDFC Banking and PSU Debt Fund - Growth Option
+INF179KC1EB5,150803,HDFC Business Cycle Fund - Growth Option
+INF179K01DC2,113070,HDFC Corporate Bond Fund - Growth Option
+INF179KA1GC0,128053,HDFC Credit Risk Debt Fund - Growth Option
+INF179KC1GL9,151751,HDFC Defence Fund - Growth Option
+INF179KC1BP1,149181,HDFC Developed World Overseas Equity Passive FOF - Growth Option
+INF179KC1AR9,148610,HDFC Dividend Yield Fund - Growth Plan
+INF179K01848,101872,HDFC Dynamic Debt Fund - Growth Option
+INF179K01BB8,101979,HDFC ELSS Tax saver - Growth Plan
+INF179K01AM7,101585,HDFC Equity Savings Fund - GROWTH PLAN
+INF179K01608,101762,HDFC Flexi Cap Fund - Growth Plan
+INF179K01707,106841,HDFC Floating Rate Debt Fund - Growth Option
+INF179K01574,102760,HDFC Focused Fund - GROWTH PLAN
+INF179K01756,101083,HDFC Gilt Fund - Growth Plan
+INF179K01LC5,115934,HDFC Gold ETF Fund of Fund - Growth Option
+INF179KC1AX7,141923,HDFC Housing Opportunities Fund  - Growth Option
+INF179K01AE4,102147,HDFC Hybrid Debt Fund - Growth Plan
+INF179K01AS4,102948,HDFC Hybrid Equity Fund - Growth Plan
+INF179K01962,100124,HDFC Income Fund - Growth Option
+INF179KA1SF8,130533,HDFC Income Plus Arbitrage Active FOF - Growth Option
+INF179K01GF8,107524,HDFC Infrastructure Fund - Growth Plan
+INF179K01BE2,102000,HDFC Large Cap Fund - Growth Option - Regular Plan
+INF179KA1RT1,130496,HDFC Large and Mid Cap Fund - Growth Option
+INF179KB1HK0,100868,HDFC Liquid Fund - Growth Plan
+INF179KC1EW1,151314,HDFC Long Duration Debt Fund - Growth Option
+INF179K01442,102452,HDFC Low Duration  Fund - Growth
+INF179KC1FF3,151457,HDFC MNC Fund - Growth Option
+INF179KC1IF7,152602,HDFC Manufacturing fund - Growth Option - Regular Plan
+INF179K01913,101989,HDFC Medium Term Debt Fund - Growth Option
+INF179K01CR2,105758,HDFC Mid Cap Fund - Growth Plan
+INF179KB1HR5,101993,HDFC Money Market Fund - Growth Option
+INF179KC1BV9,149366,HDFC Multi Cap Fund - Growth Option
+INF179KC1BD7,148901,HDFC Multi-Asset Active FOF - Growth Option
+INF179K01AP0,103131,HDFC Multi-Asset Fund - Growth Option
+INF179KC1BZ0,149869,HDFC NIFTY 100 Index Fund - Growth Option
+INF179KC1DK8,150619,HDFC NIFTY 50 VALUE 20 ETF - Growth Option
+INF179KC1IP6,152890,HDFC NIFTY LargeMidcap 250 Index Fund - Growth Option
+INF179KC1GD6,151725,HDFC NIFTY Midcap 150 Index Fund - Growth Option
+INF179KC1BR7,149287,HDFC NIFTY Next 50 Index Fund - Growth Option
+INF179KC1FB2,151375,HDFC NIFTY Smallcap 250 ETF - Growth Option
+INF179KC1GF1,151726,HDFC NIFTY Smallcap 250 Index Fund - Growth Option
+INF179KC1BN6,149106,HDFC NIFTY50 Equal weight Index Fund - Growth Option
+INF179KC1CB9,149871,HDFC Nifty 100 Equal Weight Index Fund - Growth Option
+INF179K01KZ8,101525,HDFC Nifty 50 Index Fund - Growth Plan
+INF179KC1EG4,150844,HDFC Nifty G-Sec Dec 2026 Index Fund - Growth Option
+INF179KC1EM2,151182,HDFC Nifty G-Sec Sep 2032 Index Fund - Growth Option
+INF179KC1JA6,153096,HDFC Nifty India Digital Index Fund - Growth Option - Regular
+INF179KC1FJ5,151455,HDFC Nifty SDL Oct 2026 Index Fund - Growth Option
+INF179KC1JH1,153404,HDFC Nifty Top 20 Equal Weight Index Fund - Regular Growth
+INF179KC1GR6,151803,HDFC Non-Cyclical Consumer Fund - Growth Option
+INF179KB1HS3,101996,HDFC Overnight Fund - Growth Option
+INF179KC1HL7,152084,HDFC Pharma and Healthcare Fund - Growth Option
+INF179KB1MG8,136090,HDFC Retirement Savings Fund - Equity Plan - Growth Option
+INF179KB1MK0,136466,HDFC Retirement Savings Fund - Hybrid-Debt Plan - Growth Option
+INF179KB1MI4,136463,HDFC Retirement Savings Fund - Hybrid-Equity Plan - Growth Option
+INF179K01CU6,113047,HDFC Short Term  Debt Fund - Growth Option
+INF179KC1DV5,150736,HDFC Silver ETF Fund of Fund - Growth Option
+INF179KA1RZ8,130502,HDFC Small Cap Fund - Growth Option
+INF179KC1HF9,152058,HDFC Technology Fund - Growth Option
+INF179KC1GX4,151900,HDFC Transportation and Logistics Fund - Growth Option
+INF179KB11R3,145040,HDFC Ultra Short Term Fund - Growth Option
+INF336L01IA9,129065,HSBC Aggressive Hybrid Active FOF - Growth
+INF917K01LB0,151120,HSBC Aggressive Hybrid Fund - Regular Growth
+INF917K01QL8,151134,HSBC Arbitrage Fund - Regular Growth
+INF917K01KY4,151127,HSBC Balanced Advantage Fund - Regular Growth
+INF677K01AE7,151104,HSBC Banking and PSU Debt Fund - Regular Growth
+INF336L01164,115116,HSBC Brazil Fund-Growth
+INF917K01RF8,151144,HSBC Business Cycles Fund - Regular Growth
+INF336L01QK1,149963,HSBC CRISIL IBX 50:50 Gilt Plus SDL Apr 2028 Index Fund - Regular - Growth
+INF336L01099,102262,HSBC Conservative Hybrid Fund - Regular Growth
+INF336L01RC6,152027,HSBC Consumption Fund - Regular Growth
+INF917K01AH0,150992,HSBC Corporate Bond Fund - Regular Growth
+INF917K01130,151043,HSBC Credit Risk Fund - Regular Growth
+INF677K01064,151076,HSBC ELSS Tax saver Fund - Regular Growth
+INF917K01AA5,151058,HSBC Equity Savings Fund - Regular Growth
+INF336L01AF5,102252,HSBC Flexi Cap Fund - Regular Growth
+INF336L01PE6,148409,HSBC Focused Fund - Regular Growth
+INF917K01BP1,151013,HSBC Gilt Fund - Regular Growth
+INF336L01446,107988,HSBC Global Emerging Markets Fund - Growth
+INF336L01PY4,148735,HSBC Global Equity Climate Change Fund of Fund - Regular - Growth
+INF336L01IM4,129195,HSBC Income Plus Arbitrage Active FOF - Growth
+INF917K01536,151037,HSBC Infrastructure Fund - Regular Growth
+INF336L01NY9,146771,HSBC Large & Mid Cap Fund - Regular Growth
+INF336L01016,101594,HSBC Large Cap Fund - Regular Growth
+INF336L01BL1,118907,HSBC Liquid Fund - Growth
+INF336L01BN7,118902,HSBC Liquid Fund - Regular Growth
+INF677K01452,151114,HSBC Low Duration Fund - Regular Growth
+INF917K01TH0,151149,HSBC Medium Duration Fund - Regular Growth
+INF336L01776,101685,HSBC Medium to Long Duration Fund - Regular Growth
+INF917K01254,151034,HSBC Midcap Fund - Regular Growth
+INF917K01BC9,151048,HSBC Money Market Fund - Regular Growth
+INF336L01IG6,129191,HSBC Multi Asset Active FOF - Growth
+INF336L01RF9,152378,HSBC Multi Asset Allocation Fund - Regular - Growth
+INF336L01QQ8,151289,HSBC Multi Cap Fund - Regular - Growth
+INF917K01D38,151158,HSBC NIFTY 50 INDEX FUND - Regular Growth
+INF917K01D95,151162,HSBC NIFTY NEXT 50 INDEX FUND - Regular Growth
+INF336L01OL4,147290,HSBC Overnight Fund - Regular Growth
+INF917K01CL8,151065,HSBC Short Duration Fund - Regular Growth
+INF917K01QC7,151133,HSBC Small Cap Fund - Regular Growth
+INF336L01BA4,104707,HSBC Tax Saver Equity Fund - Growth
+INF336L01OW1,147907,HSBC Ultra Short Duration Fund - Regular Growth
+INF677K01023,151110,HSBC Value Fund - Regular Growth
 INF0R8701012,152136,Helios Flexi Cap Fund - Regular Plan - Growth Option
-INF879O01019,122640,Parag Parikh Flexi Cap Fund - Regular Plan - Growth
+INF109KC15W9,152726,ICICI PRUDENTIAL ENERGY OPPORTUNITIES FUND - Growth
+INF109KC1Y64,149777,ICICI PRUDENTIAL SILVER ETF FUND OF FUND - Growth
+INF109KC19J8,150684,ICICI PRUDENTIAL TRANSPORTATION AND LOGISTICS FUND - Growth
+INF109KC1V67,149334,ICICI Prudential BSE 500 ETF FOF - Growth
 INF109K01BH2,104685,ICICI Prudential Balanced Advantage Fund - Growth
+INF109K01BU5,109445,ICICI Prudential Banking and Financial Services Fund -  Growth
+INF109K01BO8,109740,ICICI Prudential Bond Fund - Growth
+INF109KC1O90,148653,ICICI Prudential Business Cycle Fund Growth
+INF109KC18Z6,153234,ICICI Prudential CRISIL-IBX AAA Bond Financial Services Index -Dec 2026 Fund - Growth
+INF109KC1F67,147661,ICICI Prudential Commodities Fund - Growth Option
+INF109KA1N46,131051,ICICI Prudential Constant Maturity Gilt Fund - Growth
+INF109K01GU4,114239,ICICI Prudential Credit Risk Fund - Growth
+INF109KC1I15,148033,ICICI Prudential Diversified Equity All Cap Omni FOF - Growth
+INF109K01837,102137,ICICI Prudential Dynamic Asset Allocation Active FOF - Growth
+INF109K01464,100354,ICICI Prudential ELSS Tax Saver Fund - Growth
+INF109KC1N75,148517,ICICI Prudential ESG Exclusionary Strategy Fund - Growth
+INF109K01480,100356,ICICI Prudential Equity & Debt Fund - Growth
+INF109KC17X3,153069,ICICI Prudential Equity Minimum Variance Fund - Growth
+INF109K01415,100352,ICICI Prudential FMCG Fund - Growth
+INF109KC1Q80,148989,ICICI Prudential Flexicap Fund - Growth
+INF109K01AX1,101802,ICICI Prudential Floating Interest Fund - Growth
+INF109K01BZ4,111957,ICICI Prudential Focused Equity Fund - Growth
+INF109K01AV5,103149,ICICI Prudential Infrastructure Fund - Growth
+INF109KC19S9,151579,ICICI Prudential Innovation Fund - Growth
+INF109K01431,100349,ICICI Prudential Large & Mid Cap Fund - Growth
+INF109K01BL4,108466,ICICI Prudential Large Cap Fund (erstwhile Bluechip Fund)  - Growth
+INF109K01365,100365,ICICI Prudential Long Term Bond Fund - Growth
+INF109KC1D69,147345,ICICI Prudential MNC Fund - Growth Option
+INF109K01AN2,102528,ICICI Prudential MidCap Fund - Growth
+INF109K01TX1,103633,ICICI Prudential Money Market Fund Option - Growth
+INF109K01761,101144,ICICI Prudential Multi-Asset Fund - Growth
+INF109K01613,101228,ICICI Prudential Multicap Fund - Growth
+INF109KC1U27,149218,ICICI Prudential NASDAQ 100 Index Fund - Growth
+INF109KC1P57,148821,ICICI Prudential Nifty 100 Low Volatility 30 ETF FOF - Growth
+INF109KC18C5,150454,ICICI Prudential Nifty 200 Momentum 30 Index Fund - Growth
+INF109KC13Y0,153162,ICICI Prudential Nifty 500 Index Fund - Growth
+INF109KC1R55,149157,ICICI Prudential Nifty Alpha Low - Volatility 30 ETF FOF - Growth
+INF109KC13J1,150645,ICICI Prudential Nifty Auto Index Fund - Growth
+INF109KC1Z89,149859,ICICI Prudential Nifty Bank Index Fund - Growth
+INF109K1A096,153396,ICICI Prudential Nifty EV & New Age Automotive ETF FOF - Growth
+INF109KC10E8,150466,ICICI Prudential Nifty IT Index Fund - Growth
+INF109KC15U3,152481,ICICI Prudential Nifty LargeMidcap 250 Index Fund - Growth
+INF109KC1W25,149390,ICICI Prudential Nifty Midcap 150 Index Fund - Growth
+INF109K01IF1,112957,ICICI Prudential Nifty Next 50 Index Fund - Growth
+INF109KC1S13,149208,ICICI Prudential Nifty PSU Bond Plus SDL Sep 2027 40:60 Index Fund - Growth
+INF109KC18L6,150929,ICICI Prudential Nifty Pharma Index Fund - Growth
+INF109KC1U84,149281,ICICI Prudential Nifty Smallcap 250 Index Fund - Growth
+INF109KC10X8,152934,ICICI Prudential Nifty200 Value 30 Index Fund - Growth
+INF109KC19T7,152366,ICICI Prudential Nifty50 Value 20 Index Fund - Growth
+INF109KC19H2,150538,ICICI Prudential PSU Equity Fund - Growth
+INF109KC1X81,149439,ICICI Prudential Passive Multi-Asset Fund of Funds - Growth
+INF109K1A211,153459,ICICI Prudential Quality Fund - Growth
+INF109KC1O33,148598,ICICI Prudential Quant Fund Growth
+INF109K01TK8,115833,ICICI Prudential Regular Gold Savings Fund (FOF) - Growth
+INF109K01902,102330,ICICI Prudential Regular Savings Fund - Plan - Growth
+INF109KC1TU8,146722,ICICI Prudential Retirement Fund - Hybrid Aggressive - Growth Option
+INF109KC1TY0,146717,ICICI Prudential Retirement Fund - Hybrid Conservative - Growth Option
+INF109KC1UC4,146726,ICICI Prudential Retirement Fund - Pure Debt - Growth Option
+INF109KC1TQ6,146346,ICICI Prudential Retirement Fund - Pure Equity - Growth Option
+INF109KC19Y7,153181,ICICI Prudential Rural Opportunities Fund - Growth
+INF109K01746,101619,ICICI Prudential Savings Fund - Growth
+INF109K01654,101758,ICICI Prudential Short Term Fund - Growth Option
+INF109K01BI0,106823,ICICI Prudential Smallcap Fund - Growth
+INF109KC1Z22,149456,ICICI Prudential Strategic Metal and Energy Equity Fund of Fund - Growth
+INF109K01506,100363,ICICI Prudential Technology Fund - Growth
+INF109K01852,102135,ICICI Prudential Thematic Advantage Fund (FOF) - Growth
+INF109K01TP7,115092,ICICI Prudential Ultra Short Term Fund - Growth
+INF00XX01416,147618,ITI Arbitrage Fund - Regular Plan - Growth Option
+INF00XX01655,147787,ITI Balanced Advantage Fund - Regular Plan - Growth Option
+INF00XX01BR2,149324,ITI Banking and Financial Services Fund -Regular Plan - Growth Option
+INF00XX01374,147544,ITI ELSS Tax Saver Fund - Regular Plan - Growth Option
+INF00XX01CL3,151377,ITI Flexi Cap Fund- Regular Plan- Growth
+INF00XX01CV2,151778,ITI Focused Fund - Regular Plan - Growth
+INF00XX01770,148351,ITI Large Cap Fund - Regular Plan - Growth Option
+INF00XX01895,148732,ITI Mid Cap Fund - Regular Plan - Growth Option
+INF00XX01135,147184,ITI Multi Cap Fund - Regular Plan - Growth Option
+INF00XX01BL5,149270,ITI Pharma and Healthcare Fund - Regular Plan - Growth Option
+INF00XX01713,147920,ITI Small Cap Fund - Regular Plan - Growth Option
+INF00XX01AN3,148973,ITI Value Fund - Regular Plan - Growth Option
+INF192K01544,100221,JM Aggressive Hybrid Fund (Regular) -Growth Option
+INF192K01510,103780,JM Arbitrage Fund (Regular) - Growth Option
+INF192K01700,101806,JM Dynamic Bond Fund (Regular) - Growth Option
+INF192K01650,107288,JM ELSS Tax Saver Fund (Regular) - Growth option
+INF192K01635,109522,JM Flexicap Fund (Regular) - Growth option
+INF192K01577,107410,JM Focused Fund (Regular) - Growth Option
+INF192K01601,100219,JM Large Cap Fund (Regular) - Growth Option
+INF192K01981,100247,JM Liquid Fund (Regular) - Super Institutional Plan - Growth Option
+INF192K01882,100234,JM Liquid Fund - Growth Option
+INF192K01AY5,143607,JM Low Duration Fund (Regular) - Growth Option
+INF192K01AB3,100223,JM Medium to Long Duration Fund (Regular) - Growth Option
+INF192K01MS2,150812,JM Midcap Fund (Regular) - Growth
+INF192K01LX4,147836,JM Overnight Fund (Regular) - Growth
+INF192K01MM5,150542,JM Short Duration Fund (Regular) - Growth
+INF192K01NE0,152612,JM Small Cap Fund (Regular) - Growth Option
+INF137A01037,100254,JM Value Fund (Regular) - Growth Option
+INF174KA1DY6,147266,KOTAK FLOATING RATE FUND-REGULAR PLAN-GROWTH OPTION
+INF174KA1SO5,152765,KOTAK NIFTY MIDCAP 50 INDEX FUND-REGULAR PLAN-GROWTH
+INF174K01E92,133036,Kotak Aggressive Hybrid Fund - Regular Plan -Growth
+INF174K01302,105968,Kotak Arbitrage Fund - Regular Plan - Growth
+INF174KA1SI7,152752,Kotak BSE PSU Index Fund - Regular Plan - Growth
+INF174KA1186,144333,Kotak Balanced Advantage Fund -Regular Plan - Growth Option
+INF174K01FO3,123690,Kotak Banking and PSU Debt - Growth
+INF174K01EM0,100299,Kotak Bond Fund - Regular Plan Growth
+INF174K01ES7,101373,Kotak Bond Short Term Plan-(Growth)
+INF174KA1JK2,150626,Kotak Business Cycle Fund-Regular Plan--Growth
+INF174KA1PM5,152170,Kotak Consumption Fund - Regular plan - Growth Option
+INF174K01245,103040,Kotak Contra Fund - Regular Plan - Growth
+INF174K01DY7,117716,Kotak Credit Risk Fund - Growth
+INF174K01393,114859,Kotak Debt Hybrid - Growth
+INF174K01FA2,108511,Kotak Dynamic Bond Fund Regular Plan Growth
+INF174KA1FF0,148602,Kotak ESG Exclusionary Strategy Fund - Regular Plan - Growth Option
+INF174K01C78,131372,Kotak Equity Savings Fund - Regular - Growth
+INF174K01336,112090,Kotak Flexicap Fund - Growth
+INF174KA1EK3,147477,Kotak Focused Fund- Regular plan _ Growth Option
+INF174K01FL9,100281,Kotak Gilt-Investment  Provident Fund and Trust-Growth
+INF174K01FI5,100265,Kotak Gilt-Investment Regular-Growth
+INF174K01DV3,106441,Kotak Global Emerging Market Overseas Equity Omni FOF- Growth
+INF174KA1HD1,149056,Kotak Global Innovation Overseas Equity Omni FOF - Regular Plan-Growth
+INF174K01AT3,114758,Kotak Gold Fund Growth
+INF174KA1PW4,152216,Kotak Healthcare Fund - Regular Plan - Growth Option
+INF174KA1KG8,150820,Kotak Income Plus Arbitrage Omni  FOF-Regular Plan-Growth
+INF178L01095,133796,Kotak Infrastructure & Economic Reform Fund - Standard Plan-Growth
+INF174KA1FL8,148645,Kotak International REIT Overseas Equity Omni FOF - Regular Plan - Growth
+INF174K01187,103234,Kotak Large & Midcap Fund - Growth-Regular
+INF174K01153,114458,Kotak Large Cap Fund - Growth
+INF174K01NI9,100835,Kotak Liquid Fund - Regular Plan - Growth
+INF174KA1RC2,152489,Kotak Long Duration Fund - Regular Plan - Growth
+INF178L01202,133805,Kotak Low Duration Fund- Regular Plan-Growth Option
+INF174KA1IC1,149840,Kotak Manufacture in India Fund - Regular Plan Growth
+INF174K01VL6,128009,Kotak Medium Term Fund - Growth
+INF174K01DS9,104908,Kotak Midcap Fund - Regular Plan - Growth
+INF174K01NA6,101893,Kotak Money Market Fund - (Growth)
+INF174KA1PA0,152065,Kotak Multi Asset Allocation Fund - Regular Plan - Growth Option
+INF174K01468,102574,Kotak Multi Asset Omni FOF - Growth- Regular
+INF174KA1HS9,149182,Kotak Multicap Fund-Regular Plan-Growth
+INF174KA1RW0,152664,Kotak NIFTY 100 Low Volatility 30 Index Fund - Regular plan - Growth option
+INF174KA1NY5,151783,Kotak Nifty 200 Momentum 30 Index Fund - Regular Plan - Growth Option
+INF174KA1GX1,148974,Kotak Nifty 50 Index Fund - Regular Plan-Growth
+INF174KA1OO4,151909,Kotak Nifty Financial Services Ex-Bank Index Fund - Regular Plan - Growth option
+INF174KA1PG7,152100,Kotak Nifty G-Sec July 2033 Index Fund - Regular Plan - Growth
+INF174KA1FX3,148743,Kotak Nifty Next 50 Index Fund - Regular Plan - Growth Option
+INF174KA1KZ8,151216,Kotak Nifty SDL Jul 2026 Index Fund Regular Plan Growth
+INF174KA1MG4,151417,Kotak Nifty SDL Jul 2033 Index Fund Regular Plan Growth Option
+INF174KA1MY7,151647,Kotak Nifty Smallcap 50 Index Fund - Regular Plan - Growth
+INF174KA1BC6,146142,Kotak Overnight Fund -Regular plan-Growth Option
+INF174KA1EW8,147724,Kotak Pioneer Fund- Regular Plan- Growth Option
+INF174KA1OI6,151878,Kotak Quant Fund - Regular Plan - Growth Option
+INF174K01FD6,102591,Kotak Savings Fund -Growth
+INF174KA1MR1,151602,Kotak Silver ETF Fund of Fund - Regular Plan - Growth Option
+INF174KA1SC0,152703,Kotak Special Opportunities Fund - Regular Plan - Growth Option
+INF174KA1QW2,152460,Kotak Technology Fund - Regular Plan - Growth Option
+INF174KA1FR5,148661,Kotak US Specific Equity Passive FOF - Regular Plan - Growth
+INF174K01211,102875,Kotak-Small Cap Fund - Growth
+INF767K01030,100323,LIC MF Aggressive Hybrid Fund-Regular Plan-Growth
+INF767K01PL9,145890,LIC MF Arbitrage Fund-Regular Plan-Growth
+INF767K01139,101199,LIC MF BSE Sensex Index Fund-Regular Plan-Growth
+INF767K01QV6,149259,LIC MF Balanced Advantage Fund-Regular Plan-Growth
+INF767K01535,105823,LIC MF Banking & PSU Fund-Regular Plan-Growth
+INF767K01NH2,134016,LIC MF Banking and Financial Services Fund-Regular Plan-Growth
+INF767K01048,101271,LIC MF Children's Fund-Regular Plan-Growth
+INF767K01808,101869,LIC MF Conservative Hybrid Fund-Regular Plan-Growth
+INF397L01KY7,152019,LIC MF Dividend Yield Fund-Regular Plan-Growth
+INF767K01956,100865,LIC MF ELSS Tax Saver-Regular Plan-Growth
+INF397L01315,151950,LIC MF Equity Savings Fund-Regular Plan-Growth
+INF767K01071,100313,LIC MF Flexi Cap Fund-Regular Plan-Growth
+INF397L01KE9,152009,LIC MF Focused Fund-Regular Plan-Growth
+INF767K01733,100319,LIC MF Gilt Fund-PF Plan-Growth
+INF767K01709,100317,LIC MF Gilt Fund-Regular Plan-Growth
+INF397L01992,151973,LIC MF Gold ETF Fund of Fund-Regular Plan-Growth
+INF397L01LG2,152025,LIC MF Healthcare Fund-Regular Plan-Growth
+INF767K01501,107763,LIC MF Infrastructure Fund-Regular Plan-Growth
+INF767K01NB5,133711,LIC MF Large & Mid Cap Fund-Regular Plan-Growth
+INF767K01105,106871,LIC MF Large Cap Fund-Regular Plan-Growth
+INF767K01IS9,101185,LIC MF Liquid Fund-Regular Plan-Growth
+INF767K01AO5,101830,LIC MF Low Duration Fund-Regular Plan-Growth
+INF767K01RO9,152922,LIC MF Manufacturing Fund-Regular Plan-Growth
+INF767K01923,100315,LIC MF Medium to Long Duration Fund-Regular Plan-Growth
+INF397L01JO0,152001,LIC MF Mid Cap Fund-Regular Plan-Growth
+INF767K01RB6,150393,LIC MF Money Market Fund-Regular Plan-Growth
+INF767K01RW2,153248,LIC MF Multi Asset Allocation Fund-Regular Plan-Growth
+INF767K01162,101201,LIC MF Nifty 50 Index Fund-Regular Plan-Growth
+INF397L01174,151935,LIC MF Nifty Next 50 Index Fund-Regular Plan-Growth
+INF767K01QD4,147519,LIC MF Overnight Fund-Regular Plan-Growth
+INF767K01PT2,145952,LIC MF Short Duration Fund-Regular Plan-Growth
+INF397L01JW3,152003,LIC MF Small Cap Fund-Regular Plan-Growth
+INF767K01QO1,147770,LIC MF Ultra Short Duration Fund-Regular Plan-Growth
+INF397L01KQ3,152016,LIC MF Value Fund-Regular Plan-Growth
+INF174V01BZ5,152671,Mahindra Manulife Manufacturing Fund - Regular Plan - Growth
+INF174V01BT8,152441,Mahindra Manulife Multi Asset Allocation Fund- Regular Plan - Growth
+INF174V01BH3,150912,Mahindra Manulife Small Cap Fund - Regular Plan - Growth
+INF769K01DE6,134815,Mirae Asset Aggressive Hybrid Fund - Regular Plan - Growth
+INF769K01FP7,148400,Mirae Asset Arbitrage Fund Regular Growth
+INF769K01IK2,150473,Mirae Asset Balanced Advantage Fund Regular Plan- Growth
+INF769K01GU5,148621,Mirae Asset Banking and Financial Services Fund Regular Growth
+INF769K01FV5,148416,Mirae Asset Banking and PSU Fund - Regular Plan - Growth
+INF769K01GB5,148502,Mirae Asset Diversified Equity Allocator Passive FOF - Regular Plan - Growth
+INF769K01DK3,135784,Mirae Asset ELSS Tax Saver Fund - Regular Plan - Growth
+INF769K01EI5,145695,Mirae Asset Equity Savings Fund- Regular Plan- Growth
+INF769K01JG8,151414,Mirae Asset Flexi Cap Fund - Regular Plan - Growth
+INF769K01ES4,147203,Mirae Asset Focused Fund Regular Plan Growth
+INF769K01IP1,150594,Mirae Asset Global Electric & Autonomous Vehicles Equity Passive FOF - Regular Plan - Growth
+INF769K01IR7,150596,Mirae Asset Global X Artificial Intelligence & Technology ETF Fund of Fund - Regular Plan - Growth
+INF769K01135,114931,Mirae Asset Great Consumer Fund - Regular Plan - Growth option
+INF769K01HT5,149380,Mirae Asset Hang Seng TECH ETF Fund of Fund Regular Plan - Growth Option
+INF769K01EA2,143785,Mirae Asset Healthcare Fund -Regular Growth
+INF769K01101,112932,Mirae Asset Large & Midcap Fund - Regular Plan - Growth
+INF769K01010,107578,Mirae Asset Large Cap Fund - Growth Plan
+INF769K01788,111646,Mirae Asset Liquid Fund - Regular Plan - Growth
+INF769K01937,107705,Mirae Asset Low Duration Fund - Regular Plan - Growth
+INF769K01EY2,147479,Mirae Asset Midcap Fund - Regular Plan-Growth Option
+INF769K01HK4,149115,Mirae Asset Money Market Fund Regular Growth
+INF769K01KW3,152347,Mirae Asset Multi Asset Allocation Fund - Regular Plan - Growth
+INF769K01KH4,151812,Mirae Asset Multicap Fund - Regular Plan - Growth
+INF769K01HG2,148929,Mirae Asset NYSE FANG + ETF Fund of Fund Regular Growth
+INF769K01GN0,148576,Mirae Asset Nifty 100 ESG Sector Leaders Fund of Fund Regular Growth
+INF769K01HW9,149788,Mirae Asset Nifty India Manufacturing ETF FOF - Regular Plan - Growth
+INF769K01LK6,152647,Mirae Asset Nifty MidSmallcap400 Momentum Quality 100 ETF Fund of Fund - Regular Plan - Growth
+INF769K01IE5,150360,Mirae Asset Nifty SDL Jun 2027 Index Fund - Regular Plan - Growth
+INF769K01JW5,151694,Mirae Asset Nifty SDL June 2028 Index Fund -Regular Plan - Growth
+INF769K01LD1,152457,Mirae Asset Nifty Smallcap 250 Momentum Quality 100 ETF Fund of Fund - Regular Plan - Growth
+INF769K01LR1,152720,Mirae Asset Nifty200 Alpha 30 ETF Fund of Fund - Regular Plan - Growth
+INF769K01HQ1,149171,Mirae Asset S&P 500 Top 50 ETF Fund of Fund Regular Growth
+INF769K01DU2,142642,Mirae Asset Short Duration Fund - Regular Plan - Growth
+INF769K01GH2,148530,Mirae Asset Ultra Short Duration Fund Regular Growth
+INF0J8L01057,150366,NJ Arbitrage Fund - Regular Plan - Growth Option
+INF0J8L01024,149266,NJ Balanced Advantage Fund - Regular Plan - Growth Option
+INF0J8L01099,151609,NJ ELSS Tax Saver Scheme Regular Growth
+INF0J8L01131,151920,NJ Flexi Cap Fund - Regular Plan - Growth Option
+INF0J8L01073,150368,NJ Overnight Fund - Regular Plan - Growth Option
+INF204K01FW1,112936,Nippon India Aggressive Hybrid Fund - Growth Plan
+INF204K01IY1,113345,Nippon India Arbitrage Fund - Growth Plan - Growth Option
+INF204K01604,102846,Nippon India Balanced Advantage Fund-Growth Plan-Growth Option
+INF204K01927,101862,Nippon India Banking & Financial Services Fund-Growth Plan-Growth Option
+INF204KA1T56,134545,Nippon India Banking and PSU Fund- Growth Plan- Growth Option
+INF204K01FD1,102172,Nippon India Conservative Hybrid  Fund-Growth Plan
+INF204K01AQ4,102751,Nippon India Consumption Fund-Growth Plan-Growth Option
+INF204K01EF9,100856,Nippon India Corporate Bond Fund - Growth Plan - Growth Option
+INF204K01FQ3,112938,Nippon India Credit Risk Fund  - Growth Plan
+INF204K01FT7,112939,Nippon India Credit Risk Fund  - Institutional Growth Plan
+INF204KB13X3,148641,Nippon India Diversified Equity Flexicap Passive FoF - Regular Plan - Growth Option
+INF204K01FI0,102849,Nippon India Dynamic Bond Fund-Growth Plan-Growth Option
+INF204KA1V94,134593,Nippon India Equity Savings Fund- Growth Plan- Growth Option
+INF204KC1097,149089,Nippon India Flexi Cap Fund - Regular Plan - Growth Plan - Growth Option
+INF204K01CG1,102673,Nippon India Floater Fund - Growth Plan-Growth Option
+INF204K01GE7,104637,Nippon India Focused Fund -Growth Plan -Growth Option
+INF204K01BU4,109720,Nippon India Gilt  Fund -Growth Plan - Growth Option
+INF204K01KN0,114616,Nippon India Gold Savings Fund-Growth plan- Growth Option
+INF204K01323,100377,Nippon India Growth Fund-Growth Plan-Growth Option
+INF204K01IM6,113269,Nippon India Index Fund - BSE Sensex Plan - Growth Plan - Growth Option
+INF204K01IE3,113296,Nippon India Index Fund - Nifty 50 Plan - Growth Plan - Growth Option
+INF204KC1BL9,152034,Nippon India Innovation Fund-Regular Plan-Growth Option
+INF204KA1SH3,130863,Nippon India Japan Equity Fund- Growth Plan- Growth Option
+INF204K01562,106235,Nippon India Large Cap  Fund- Growth Plan -Growth Option
+INF204K01UL3,100837,Nippon India Liquid Fund - Retail Option - Growth Plan
+INF204K01UN9,100851,Nippon India Liquid Fund -Growth Plan
+INF204K01EN3,111748,Nippon India Low Duration Fund - Retail Plan - Growth Plan - Growth Option
+INF204K01EV6,111753,Nippon India Low Duration Fund- Growth Plan - Growth Option
+INF204KA1PZ1,130037,Nippon India Medium Duration Fund - Growth Option
+INF204K01CL1,100387,Nippon India Medium to Long Duration  Fund - Growth Plan Growth Option
+INF204K01VA4,103048,Nippon India Money Market Fund-Growth Plan-Growth Option
+INF204KB13Y1,148663,Nippon India Multi - Asset Omni FoF - Regular Plan - Growth Option
+INF204KB16V0,148459,Nippon India Multi Asset Allocation Fund - Regular Plan - Growth Option
+INF204K01489,101161,Nippon India Multi Cap Fund-Growth Plan-Growth Option
+INF204KB19Y8,148719,Nippon India Nifty 50 Value 20 Index Fund - Regular Plan - Growth Option
+INF204KC1659,150752,Nippon India Nifty AAA PSU Bond Plus SDL - Sep 2026 Maturity 50:50 Index Fund-Regular Plan-Growth Option
+INF204KC1550,150490,Nippon India Nifty Alpha Low Volatility 30 Index Fund - Regular Plan - Growth Option
+INF204KC1998,150923,Nippon India Nifty G-Sec Jun 2036 Maturity Index Fund-Regular Plan-Growth Option
+INF204KC1AL1,151439,Nippon India Nifty G-Sec Oct 2028 Maturity Index Fund-Regular Plan-Growth Option
+INF204KC1857,150904,Nippon India Nifty G-Sec Sep 2027 Maturity Index Fund-Regular Plan-Growth Option
+INF204KB15Z3,148723,Nippon India Nifty Midcap 150 Index Fund - Regular Plan - Growth Option
+INF204KB1W91,146514,Nippon India Nifty Next 50 Junior BeES FoF - Growth Plan - Growth Option
+INF204KC1717,150825,Nippon India Nifty SDL Plus G-Sec - Jun 2028 Maturity 70:30 Index Fund-Regular Plan-Growth Option
+INF204KB12W7,148518,Nippon India Nifty Smallcap 250 Index Fund - Regular Plan - Growth Option
+INF204KB1ZB0,143702,Nippon India Nivesh Lakshya Long Duration Fund- Growth Option
+INF204KB1Q65,145811,Nippon India Overnight Fund - Regular Plan - Growth Option
+INF204K01968,102431,Nippon India Pharma Fund-Growth Plan-Growth Option
+INF204K01AE0,101262,Nippon India Power & Infra Fund-Growth Plan -Growth Option
+INF204K01760,108249,Nippon India Quant Fund -Growth Plan - Growth Option
+INF204KA1C22,133572,Nippon India Retirement Fund- Income Generation Scheme-Growth Plan - Growth Option
+INF204KA1B64,133565,Nippon India Retirement Fund- Wealth Creation Scheme- Growth Plan - Growth Option
+INF204K01FL4,101665,Nippon India Short Term Fund-Growth Plan
+INF204KC1345,149759,Nippon India Silver ETF FOF-Regular Plan- Growth Option
+INF204K01HY3,113177,Nippon India Small Cap Fund - Growth Plan - Growth Option
+INF204KC1279,149328,Nippon India Taiwan Equity fund- Regular Plan- Growth Option
+INF204K01GK4,103196,Nippon India Tax Saver (ELSS) Fund-Growth Plan-Growth Option
+INF204KA12G2,134922,Nippon India US Equity Opportunities Fund- Growth Plan- Growth Option
+INF204K01UE8,143493,Nippon India Ultra Short Duration Fund- Growth Option
+INF204K01GB3,103085,Nippon India Value Fund- Growth Plan
+INF204K01406,100380,Nippon India Vision Fund-GROWTH PLAN-Growth Option
+INF663L01HC4,138382,PGIM India Aggressive Hybrid Equity Fund - Growth Option
+INF223J019N4,138876,PGIM India Arbitrage Fund - Regular Plan - Growth
+INF663L01V72,148657,PGIM India Balanced Advantage Fund - Regular Plan - Growth Option
+INF663L01X54,151404,"PGIM India CRISIL IBX Gilt Index - Apr 2028 Fund - Regular Plan, Growth Option"
+INF223J01DB2,138318,PGIM India Corporate Bond Fund - Growth
+INF663L01484,116485,PGIM India Dynamic Bond Fund - Growth Option
+INF663L01FQ8,135598,PGIM India ELSS Tax Saver Fund - Regular Plan - Growth Option
+INF223J01AY0,138453,PGIM India Emerging Markets Equity Fund of Fund- Growth
+INF223J01FB7,138372,PGIM India Equity Savings Fund - Growth Option
+INF663L01FJ3,133836,PGIM India Flexi Cap Fund - Regular Plan - Growth Option
+INF223J01AQ6,138470,PGIM India Gilt Fund - Growth
+INF223J01AU8,138523,PGIM India Global Equity Opportunities Fund of Fund- Growth
+INF663L01W97,149299,PGIM India Global Select Real Estate Securities Fund of Fund - Regular Plan - Growth Option
+INF663L01Z52,153040,PGIM India Healthcare Fund - Regular Plan - Growth Option
+INF663L01GW4,138308,PGIM India Large Cap Fund - Growth
+INF663L01X88,152383,PGIM India Large and Midcap Fund - Regular Plan - Growth Option
+INF223J01BP6,138288,PGIM India Liquid Fund - Growth
+INF663L01DZ4,125305,PGIM India Midcap Fund - Regular Plan - Growth Option
+INF663L01U24,148159,PGIM India Money Market Fund - Regular Plan - Growth Option
+INF663L01Y87,152816,PGIM India Multi Cap Fund - Regular Plan - Growth Option
+INF663L01T43,147600,PGIM India Overnight Fund - Regular Plan- Growth Option
+INF663L01Y46,152538,PGIM India Retirement Fund - Regular Plan - Growth Option
+INF663L01W30,149020,PGIM India Small Cap Fund - Regular Plan - Growth Option
+INF223J01FK8,138343,PGIM India Ultra Short Duration Fund - Growth
+INF879O01217,152110,Parag Parikh Arbitrage Fund - Regular Plan Growth
+INF879O01209,148959,Parag Parikh Conservative Hybrid Fund - Regular Plan - Growth
+INF879O01233,152464,Parag Parikh Dynamic Asset Allocation Fund - Regular Plan Growth
+INF879O01092,147482,Parag Parikh ELSS Tax Saver Fund- Regular Growth
+INF879O01019,122640,Parag Parikh Flexi Cap Fund - Regular Plan - Growth
+INF879O01035,143260,Parag Parikh Liquid Fund- Regular Plan- Growth
+INF082J01390,147371,QUANTUM ESG BEST IN CLASS STRATEGY FUND - REGULAR PLAN - GROWTH OPTION
+INF082J01440,152108,QUANTUM SMALL CAP FUND - REGULAR PLAN GROWTH OPTION
+INF966L01AQ6,149337,Quant Value Fund - Growth Option - Regular Plan
+INF082J01275,141063,Quantum Diversified Equity All Cap Active FOF - Regular Plan Growth Option
+INF082J01218,141061,Quantum Dynamic Bond Fund - Regular Plan Growth Option
+INF082J01366,141070,Quantum ELSS Tax Saver Fund - Regular Plan Growth Option
+INF082J01481,153095,Quantum Ethical Fund - Regular Plan Growth Option
+INF082J01358,141064,Quantum Gold Savings Fund - Regular Plan Growth Option
+INF082J01309,141066,Quantum Liquid Fund - Regular Plan Growth Option
+INF082J01341,141072,Quantum Multi Asset Active FOF - Regular Plan Growth Option
+INF082J01465,152475,Quantum Multi Asset Allocation Fund - Regular Plan Growth Option
+INF082J01424,150389,Quantum Nifty 50 ETF Fund of Fund - Regular Plan - Growth
+INF082J01242,141068,Quantum Value Fund - Regular Plan Growth Option
+INF277KA1588,150694,TATA CRISIL-IBX GILT INDEX - APRIL 2026 INDEX FUND - REGULAR PLAN - GROWTH
+INF277K01303,100414,Tata Aggressive Hybrid Fund- Regular Plan - Growth Option
+INF277K015Q7,145723,Tata Arbitrage Fund-Regular Plan-Growth
+INF277KA1DH7,153425,Tata BSE Quality Index Fund Regular plan Growth Option
+INF277KA1CX6,153134,Tata BSE Select Business Groups Index Fund - Regular Growth
+INF277K010S4,146007,Tata Balanced Advantage Fund-Regular Plan-Growth
+INF277KA1190,149068,Tata Business Cycle Fund-Regular Plan-Growth
+INF277K01AJ5,101491,Tata Childrens Fund -Regular Plan-Growth Option
+INF277KA1299,149351,Tata Corporate Bond Fund-Regular Plan-Growth
+INF277K01Z44,135797,Tata Digital India Fund-Regular Plan-Growth
+INF277K018Z2,148948,Tata Dividend Yield Fund-Regular Plan-Growth
+INF277K01I52,132757,Tata ELSS Fund-Growth-Regular Plan
+INF277K01907,101906,Tata Equity Savings Fund -Regular Plan-Growth Option
+INF277K01956,100415,Tata Ethical Fund-Regular Plan - Growth Option
+INF277K019K2,144548,Tata Flexi Cap Fund -Regular Plan-Growth
+INF277KA1091,149003,Tata Floating Rate Fund-Regular Plan-Growth
+INF277K010Y2,147760,Tata Focused Fund-Regular Plan-Growth
+INF277K01519,101042,Tata Gilt Securities Fund -Regular Plan- Growth Option
+INF277KA1901,152290,Tata Gold ETF Fund of Fund Regular Plan Growth Option
+INF277KA1521,150537,Tata Housing Opportunities Fund - Regular Plan - Growth
+INF277K010A2,135804,Tata India Consumer Fund-Regular Plan-Growth
+INF277KA1CR8,153059,Tata India Innovation Fund- Regular Growth
+INF277K016A9,135812,Tata India Pharma & Healthcare Fund-Regular Plan-Growth
+INF277K01782,101766,Tata Infrastructure Fund-Regular Plan- Growth Option
+INF277K01428,101824,Tata Large & Mid Cap Fund- Regular Plan - Growth Option
+INF277K01931,100475,Tata Large Cap Fund -Regular Plan - Growth Option
+INF277K01YD8,102672,Tata Liquid Fund -Regular Plan - Growth Option
+INF277K01626,102328,Tata Mid Cap Fund Regular Plan- Growth Option
+INF277K01LQ7,101847,Tata Money Market Fund-Regular Plan - Growth Option
+INF277K012Z5,148050,Tata Multi Asset Allocation Fund-Regular Plan-Growth
+INF277KA1AR2,152560,Tata Nifty Auto Index Fund - Regular Plan - Growth
+INF277KA1CL1,152954,Tata Nifty Capital Markets Index Fund - Regular Plan Growth Option
+INF277KA1AX0,152574,Tata Nifty Financial Services Index Fund - Regular Plan - Growth
+INF277KA1828,151306,Tata Nifty G Sec Dec 2026 Index Fund-Regular Plan-Growth
+INF277KA1463,150345,Tata Nifty India Digital ETF Fund of Fund -Regular Plan-Growth
+INF277KA1BZ3,152746,Tata Nifty India Tourism Index Fund - Regular - Growth
+INF277KA1BD0,152567,Tata Nifty MidSmall Healthcare Index Fund - Regular Plan - Growth
+INF277KA1646,150741,Tata Nifty Midcap 150 Momentum 50 Index Fund - Growth - Regular Plan
+INF277KA1AL5,152573,Tata Nifty Realty Index Fund - Regular Plan - Growth
+INF277KA1406,150330,Tata Nifty SDL Plus AAA PSU Bond Dec 6040 Index Fund-Regular Plan -Growth
+INF277KA1CF3,152834,Tata Nifty200 Alpha 30 Index Fund - Regular -Growth
+INF277KA1BJ7,152590,Tata Nifty500 Multicap India Manufacturing 50:30:20 Index Fund -Regular Plan-Growth
+INF277KA1BP4,152596,Tata Nifty500 Multicap Infrastructure 50:30:20 Index Fund - Regular Plan - Growth
+INF277K016T9,146977,Tata Overnight Fund-Regular Plan-Growth
+INF277K012B6,135815,Tata Resources & Energy Fund-Regular Plan-Growth
+INF277K01FG0,115942,Tata Retirement Savings Fund - Progressive Plan -Regular Plan-Growth Option
+INF277K01FI6,115944,Tata Retirement Savings Fund- Conservative Plan-Regular Plan-Growth Option
+INF277K01FH8,115943,Tata Retirement Savings Fund- Moderate Plan-Regular Plan-Growth Option
+INF277K01972,101548,Tata Short Term Bond Fund -Regular Plan- Growth Option
+INF277KA1893,152297,Tata Silver ETF Fund of Fund Regular Plan Growth Option
+INF277K015O2,145208,Tata Small Cap Fund-Regular Plan-Growth
+INF277K01MA9,103159,Tata Treasury Advantage Fund - Regular Plan - Growth Option
+INF277K016S1,146070,Tata Ultra Short Term Fund-Regular Plan-Growth
+INF277K01451,101672,Tata Value Fund - Regular Plan -Growth Option
+INF789F01513,100669,UTI - Flexi Cap Fund-Growth Option
+INF789F1ACO4,145287,UTI - Floater Fund - Regular Plan  - Growth Option
+INF789F01661,102510,UTI - GILT FUND - Regular Plan - Growth Option
+INF789F01844,100740,UTI - MNC Fund - Regular Plan - Growth Option
+INF789F01604,100814,UTI - Overnight  Fund - Regular Plan - Growth Option
+INF789F01323,100684,UTI Aggressive Hybrid Fund - Regular Plan - Growth
+INF789FB1RJ0,104075,UTI Arbitrage Fund - Regular Plan - Growth Option
+INF789F1AYS9,151763,UTI BSE Housing Index Fund - Regular Plan - Growth Option
+INF789F1AVE5,149880,UTI BSE Low Volatility Index Fund - Regular Plan - Growth Option
+INF789F1AYT7,151882,UTI Balanced Advantage Fund - Regular Plan - Growth Option
+INF789F014Z9,126939,UTI Banking & PSU Fund- Regular Plan - Growth Option
+INF789F01372,102401,UTI Banking and Financial Services Fund - Regular Plan - Growth Option
+INF789F1AWW5,151184,UTI CRISIL SDL Maturity April 2033 Index Fund - Regular Plan - Growth Option
+INF789F1AWY1,151238,UTI CRISIL SDL Maturity June 2027 Index Fund - Regular Plan - Growth Option
+INF789F01893,102535,UTI Conservative Hybrid Fund - Regular Plan - Growth Option
+INF789F01QZ1,117981,UTI Credit Risk Fund  - Regular Plan - Growth Option
+INF789F01547,100821,UTI ELSS Tax Saver Fund - Regular Plan - Growth Option
+INF789F1A744,144484,UTI Equity Savings Fund - Regular Plan - Growth Option
+INF789F1AUY5,149090,UTI Focused Fund - Regular Plan - Growth Option
+INF789F1AWA1,150715,UTI Gold ETF Fund of Fund - Regular Plan - Growth Opton
+INF789F01695,100807,UTI Healthcare Fund - Regular Plan - Growth Option
+INF789F01CE6,106425,UTI India Consumer Fund - Regular Plan - Growth Option
+INF789F01752,102395,UTI Infrastructure Fund-Growth Option
+INF789F1AYY7,152086,UTI Innovation Fund - Regular Plan - Growth Option
+INF789F01869,100664,UTI Large & Mid Cap Fund - Regular Plan - Growth Option
+INF789F01976,100651,UTI Large Cap Fund - Regular Plan - Growth Option
+INF789F1AXS1,151527,UTI Long Duration Fund - Regular Plan - Growth Option
+INF789F01OT9,102544,UTI Low Duration Fund - Regular Plan - Growth Option
+INF789F01PX8,112077,UTI MMF - Regular Plan - Growth Option
+INF789FB1JU4,134499,UTI Medium Duration Fund - Regular Plan - Growth Option
+INF789F01406,100741,UTI Medium to Long Duration Fund- Regular Plan - Growth
+INF789F01810,102394,UTI Mid Cap Fund-Growth Option
+INF789F01AP6,111599,UTI Multi Asset Allocation Fund - Regular Plan - Growth Option
+INF789F1AUS7,148704,UTI Nifty 200 Momentum 30 Index Fund - Regular Plan - Growth Option
+INF789F1AZG1,152858,UTI Nifty 200 Quality 30 Index Fund - Regular Plan - Growth Option
+INF789F01JN2,100822,UTI Nifty 50 Index Fund - Regular Plan - Growth Option
+INF789F1AYO8,151738,UTI Nifty 500 Value 50 Index Fund - Regular Plan - Growth Option
+INF789F1AZL1,153087,UTI Nifty Alpha Low-Volatility 30 Index Fund - Regular Plan - Growth Option
+INF789F1AB30,153271,UTI Nifty India Manufacturing Index Fund - Regular Plan - Growth Option
+INF789F1AZN7,153088,UTI Nifty Midcap 150 Index Fund - Regular Plan - Growth Option
+INF789F1AVG0,150312,UTI Nifty Midcap 150 Quality 50 Index Fund - Regular Plan - Growth Option
+INF789F1AB06,153273,UTI Nifty Midsmallcap 400 Momentum Quality 100 Index Fund - Regular Plan - Growth Option
+INF789FC11T3,143340,UTI Nifty Next 50 Index Fund - Regular Plan - Growth Option
+INF789F1AZI7,152865,UTI Nifty Private Bank Index Fund - Regular Plan - Growth Option
+INF789F1AYQ3,151761,UTI Nifty50 Equal Weight Index Fund - Regular Plan - Growth Option
+INF789F1AA80,153205,UTI Quant Fund - Regular Plan - Growth Option
+INF789F01QA4,106624,UTI Short Duration Fund - Regular Plan - Growth Option
+INF789F1AYM2,151732,UTI Silver ETF Fund of Fund - Regular Plan - Growth Option
+INF789F1AUO6,148617,UTI Small Cap Fund - Regular Plan - Growth Option
+INF789F01570,102532,UTI Ultra Short Duration Fund - Regular Plan - Growth Option
+INF789F01AG5,103098,UTI Value Fund - Regular Plan - Growth Option
+INF789F01PH1,102012,UTI-  Liquid Cash Plan - Regular Plan - Growth Option
+INF789F01463,103026,UTI-Dividend Yield Fund.-Growth
+INF789F01299,102398,UTI-Transportation and Logistics  Fund-Growth Option
+INF582M01KC8,153111,Union Active Momentum Fund - Regular Plan - Growth Option
+INF582M01HC4,148591,Union Aggressive Hybrid Fund - Regular Plan - Growth Option
+INF582M01DI0,142035,Union Balanced Advantage Fund - Regular Plan - Growth Option
+INF582M01JM9,152411,Union Business Cycle Fund - Regular Plan - Growth Option
+INF582M01302,116051,Union ELSS Tax Saver Fund - Growth Option
+INF582M01EG2,144310,Union Equity Savings Fund - Regular Plan - Growth Option
+INF582M01104,115270,Union Flexi Cap Fund - Growth Option
+INF582M01KT2,153338,Union Gold ETF Fund of Fund - Regular Plan - Growth Option
+INF582M01JA4,151903,Union Innovation & Opportunities Fund - Regular Plan - Growth Option
+INF582M01GD4,147748,Union Large & Midcap Fund - Regular Plan - Growth Option
+INF582M01CQ5,141247,Union Largecap Fund - Regular Plan - Growth Option
+INF582M01GM5,148071,Union Midcap Fund - Regular Plan - Growth Option
+INF582M01IS8,150855,Union Multicap Fund - Regular Plan - Growth Option
+INF582M01IM1,150552,Union Retirement Fund - Regular Plan - Growth Option
+INF582M01BY1,129647,Union Small Cap Fund - Regular Plan - Growth Option
+INF03VN01126,145968,WhiteOak Capital Liquid Fund- Regular plan-Growth Option
+INF966L01CA6,151788,quant BFSI Fund - Growth Option - Regular Plan
+INF966L01BU6,151758,quant Business Cycle Fund - Growth Option - Regular Plan
+INF966L01DC0,152256,quant Commodities Fund - Growth Option - Regular Plan
+INF966L01DI7,152338,quant Consumption Fund - Growth Option - Regular Plan
+INF966L01BO9,151714,quant Dynamic Asset Allocation Fund - Growth Option - Regular Plan
+INF966L01135,100175,quant ELSS Tax Saver Fund - Growth Option - Regular Plan
+INF966L01457,109830,quant Flexi Cap Fund - Growth Option - Regular Plan
+INF966L01374,109275,quant Focused Fund - Growth Option - Regular Plan
+INF966L01CG3,151855,quant Healthcare Fund - Growth Option - Regular Plan
+INF966L01523,106170,quant Infrastructure Fund - Growth Option
+INF966L01341,104513,quant Large & Mid Cap Fund - Growth Option
+INF966L01AW4,150441,quant Large Cap Fund - Growth Option - Regular Plan
+INF966L01317,103225,quant Liquid Fund - Growth Option - Regular Plan
+INF966L01CN9,151913,quant Manufacturing Fund - Growth Option - Regular Plan
+INF966L01176,101065,quant Mid Cap Fund - Growth Option - Regular Plan
+INF966L01CW0,152190,quant Momentum Fund - Growth Option - Regular Plan
+INF966L01200,101072,quant Multi Asset Allocation Fund-GROWTH OPTION - Regular Plan
+INF966L01BC4,151195,quant Overnight Fund - Growth Option - Regular Plan
+INF966L01DQ0,152413,quant PSU Fund - Growth Option - Regular Plan
+INF966L01AH5,148923,quant Quantamental Fund - Growth Option - Regular Plan
+INF966L01AA0,100177,quant Small Cap Fund - Growth - Regular Plan

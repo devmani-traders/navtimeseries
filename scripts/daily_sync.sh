@@ -38,7 +38,7 @@ log "=========================================="
 log "Step 1: Running main pipeline..."
 # We need to set PYTHONPATH to include the current directory so python can find the 'app' module
 export PYTHONPATH=$PROJECT_ROOT
-python3 app/main.py data/isin_master_list.csv >> "$LOG_FILE" 2>&1
+python3 -m app.main >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
     handle_error "Main pipeline failed"
 fi
@@ -46,7 +46,7 @@ log "Main pipeline completed successfully"
 
 # Step 2: Sync to database (daily mode - NAV + returns from returns report)
 log "Step 2: Syncing to database..."
-python3 app/database/sync.py --daily >> "$LOG_FILE" 2>&1
+python3 -m app.database.sync --daily >> "$LOG_FILE" 2>&1
 if [ $? -ne 0 ]; then
     handle_error "Database sync failed"
 fi
