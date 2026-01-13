@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from datetime import timedelta
 from app import config
+from app.utils.storage import storage
 
 class ReturnCalculator:
     def __init__(self):
@@ -102,7 +103,8 @@ class ReturnCalculator:
                 
             filepath = f"{nav_folder}/{str(int(float(scheme_code)))}.csv"
             try:
-                nav_df = pd.read_csv(filepath)
+                # Use storage abstraction to read from GCS or local
+                nav_df = storage.read_csv(filepath)
                 returns = self.calculate_returns(nav_df)
                 
                 # Add metadata

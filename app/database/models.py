@@ -1,5 +1,5 @@
 from app.database.setup import db
-from sqlalchemy import Column, Integer, String, Float, Date, DateTime, ForeignKey, UniqueConstraint, BigInteger, Index, CheckConstraint
+from sqlalchemy import Column, Integer, String, Float, Date, DateTime, ForeignKey, UniqueConstraint, BigInteger, Index, CheckConstraint, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -26,59 +26,59 @@ class FundFactSheet(db.Model):
     """
     __tablename__ = 'mf_factsheet'
 
-    isin = db.Column(db.String(12),
-                     db.ForeignKey('mf_fund.isin'),
+    isin = Column(String(12),
+                     ForeignKey('mf_fund.isin'),
                      primary_key=True)
 
     # Core fund information
-    scheme_name = db.Column(db.String(255), nullable=True)
-    scheme_type = db.Column(db.String(100), nullable=True)
-    sub_category = db.Column(db.String(100), nullable=True)
-    plan = db.Column(db.String(50), nullable=True)
-    amc = db.Column(db.String(100), nullable=True)
+    scheme_name = Column(String(255), nullable=True)
+    scheme_type = Column(String(100), nullable=True)
+    sub_category = Column(String(100), nullable=True)
+    plan = Column(String(50), nullable=True)
+    amc = Column(String(100), nullable=True)
 
     # Financial details
-    expense_ratio = db.Column(db.Float, nullable=True)
-    minimum_lumpsum = db.Column(db.Float, nullable=True)
-    minimum_sip = db.Column(db.Float, nullable=True)
-    min_additional_purchase = db.Column(db.Float, nullable=True) # Additional to current fields 
-    aum = db.Column(db.Float, nullable=True)  # Assets Under Management
+    expense_ratio = Column(Float, nullable=True)
+    minimum_lumpsum = Column(Float, nullable=True)
+    minimum_sip = Column(Float, nullable=True)
+    min_additional_purchase = Column(Float, nullable=True) # Additional to current fields 
+    aum = Column(Float, nullable=True)  # Assets Under Management
 
     # Investment terms
-    lock_in = db.Column(db.String(100), nullable=True)
-    exit_load = db.Column(db.Text, nullable=True)      ## Additional to current fields 
+    lock_in = Column(String(100), nullable=True)
+    exit_load = Column(Text, nullable=True)      ## Additional to current fields 
 
     # Management and risk
-    fund_manager = db.Column(db.String(255), nullable=True)
-    benchmark = db.Column(db.String(255), nullable=True)
-    benchmark_isin = db.Column(db.String(12), nullable=True)  # Additional to current fields    
-    sebi_risk_category = db.Column(db.String(50), nullable=True)
-    riskometer_launch = db.Column(db.String(100), nullable=True)   # Additional to current fields 
+    fund_manager = Column(String(255), nullable=True)
+    benchmark = Column(String(255), nullable=True)
+    benchmark_isin = Column(String(12), nullable=True)  # Additional to current fields    
+    sebi_risk_category = Column(String(50), nullable=True)
+    riskometer_launch = Column(String(100), nullable=True)   # Additional to current fields 
 
     # Descriptive fields
-    investment_objective = db.Column(db.Text, nullable=True) # Additional to current fields 
-    asset_allocation = db.Column(db.Text, nullable=True)  # Additional to current fields 
+    investment_objective = Column(Text, nullable=True) # Additional to current fields 
+    asset_allocation = Column(Text, nullable=True)  # Additional to current fields 
 
     # Dates
-    launch_date = db.Column(db.Date, nullable=True)  # Legacy
-    nfo_open_date = db.Column(db.Date, nullable=True)   # Additional to current fields 
-    nfo_close_date = db.Column(db.Date, nullable=True)   # Additional to current fields 
-    reopen_date = db.Column(db.Date, nullable=True)       # Additional to current fields 
-    allotment_date = db.Column(db.Date, nullable=True)     # Additional to current fields 
+    launch_date = Column(Date, nullable=True)  # Legacy
+    nfo_open_date = Column(Date, nullable=True)   # Additional to current fields 
+    nfo_close_date = Column(Date, nullable=True)   # Additional to current fields 
+    reopen_date = Column(Date, nullable=True)       # Additional to current fields 
+    allotment_date = Column(Date, nullable=True)     # Additional to current fields 
 
     # Metadata and external entities
-    custodian = db.Column(db.String(255), nullable=True)     # Additional to current fields 
-    auditor = db.Column(db.String(255), nullable=True)        # Additional to current fields 
-    rta = db.Column(db.String(255), nullable=True)           # Additional to current fields 
-    isin_list = db.Column(db.Text, nullable=True)             # Additional to current fields 
-    sebi_registration_number = db.Column(db.String(100), nullable=True)   # Additional to current fields 
-    scheme_code = db.Column(db.String(100), nullable=True)                 # Additional to current fields AMFI scheme code
+    custodian = Column(String(255), nullable=True)     # Additional to current fields 
+    auditor = Column(String(255), nullable=True)        # Additional to current fields 
+    rta = Column(String(255), nullable=True)           # Additional to current fields 
+    isin_list = Column(Text, nullable=True)             # Additional to current fields 
+    sebi_registration_number = Column(String(100), nullable=True)   # Additional to current fields 
+    scheme_code = Column(String(100), nullable=True)                 # Additional to current fields AMFI scheme code
 
     # Timestamps
-    last_updated = db.Column(db.DateTime,
+    last_updated = Column(DateTime,
                              default=datetime.utcnow,
                              onupdate=datetime.utcnow)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
     # Relationship to main fund table
     fund = db.relationship("Fund", backref="factsheet")
@@ -96,29 +96,29 @@ class FundReturns(db.Model):
     """
     __tablename__ = 'mf_returns'
 
-    isin = db.Column(db.String(12),
-                     db.ForeignKey('mf_fund.isin'),
+    isin = Column(String(12),
+                     ForeignKey('mf_fund.isin'),
                      primary_key=True)
-    return_1m = db.Column(db.Float, nullable=True)  # 1-month return percentage
-    return_3m = db.Column(db.Float, nullable=True)  # 3-month return percentage
-    return_6m = db.Column(db.Float, nullable=True)  # 6-month return percentage
-    return_ytd = db.Column(db.Float,nullable=True)  # Year-to-date return percentage
-    return_1y = db.Column(db.Float, nullable=True)  # 1-year return percentage
-    return_3y = db.Column(db.Float, nullable=True)  # 3-year return percentage
-    return_5y = db.Column(db.Float, nullable=True)  # 5-year return percentage
-    return_3y_carg = db.Column(db.Float, nullable=True)  # 3-year return percentage
-    return_5y_carg = db.Column(db.Float, nullable=True)  # 5-year return percentage
-    return_10y_carg = db.Column(db.Float, nullable=True)  # 10-year return percentage
-    return_since_inception = db.Column(db.Float, nullable=True)  # Since inception return percentage
-    return_since_inception_carg = db.Column(db.Float, nullable=True)  # Since inception return percentage
+    return_1m = Column(Float, nullable=True)  # 1-month return percentage
+    return_3m = Column(Float, nullable=True)  # 3-month return percentage
+    return_6m = Column(Float, nullable=True)  # 6-month return percentage
+    return_ytd = Column(Float,nullable=True)  # Year-to-date return percentage
+    return_1y = Column(Float, nullable=True)  # 1-year return percentage
+    return_3y = Column(Float, nullable=True)  # 3-year return percentage
+    return_5y = Column(Float, nullable=True)  # 5-year return percentage
+    return_3y_carg = Column(Float, nullable=True)  # 3-year return percentage
+    return_5y_carg = Column(Float, nullable=True)  # 5-year return percentage
+    return_10y_carg = Column(Float, nullable=True)  # 10-year return percentage
+    return_since_inception = Column(Float, nullable=True)  # Since inception return percentage
+    return_since_inception_carg = Column(Float, nullable=True)  # Since inception return percentage
 
-    last_updated = db.Column(db.DateTime,
+    last_updated = Column(DateTime,
                              default=datetime.utcnow,
                              onupdate=datetime.utcnow)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
     # Relationship to Fund
-    fund = db.relationship("Fund", backref="returns")
+    fund = relationship("Fund", backref="returns")
 
     __table_args__ = (
         CheckConstraint('return_1m >= -100', name='check_return_1m'),
@@ -139,37 +139,37 @@ class FundHolding(db.Model):
     """
     __tablename__ = 'mf_fund_holdings'
 
-    id = db.Column(db.Integer, primary_key=True)
-    isin = db.Column(db.String(12),
-                     db.ForeignKey('mf_fund.isin'),
+    id = Column(Integer, primary_key=True)
+    isin = Column(String(12),
+                     ForeignKey('mf_fund.isin'),
                      nullable=False)  # Scheme ISIN
-    instrument_isin = db.Column(db.String(12),
+    instrument_isin = Column(String(12),
                                 nullable=False)  # ISIN of the instrument
-    coupon = db.Column(db.Float,
+    coupon = Column(Float,
                        nullable=True)  # Coupon percentage for debt instruments
-    instrument_name = db.Column(db.String(255),
+    instrument_name = Column(String(255),
                                 nullable=False)  # Name of Instrument
-    sector = db.Column(db.String(255),
+    sector = Column(String(255),
                        nullable=True)  # Industry classification
-    quantity = db.Column(db.Float, nullable=True)  # Quantity held
-    value = db.Column(db.Float, nullable=True)  # Market Value in INR
-    percentage_to_nav = db.Column(db.Float, nullable=False)  # % to Net Assets
-    yield_value = db.Column(db.Float, nullable=True)  # Yield percentage
-    instrument_type = db.Column(db.String(100),
+    quantity = Column(Float, nullable=True)  # Quantity held
+    value = Column(Float, nullable=True)  # Market Value in INR
+    percentage_to_nav = Column(Float, nullable=False)  # % to Net Assets
+    yield_value = Column(Float, nullable=True)  # Yield percentage
+    instrument_type = Column(String(100),
                                 nullable=False)  # Type of instrument
-    amc_name = db.Column(db.String(255), nullable=True)  # AMC name from upload
-    scheme_name = db.Column(db.String(255),
+    amc_name = Column(String(255), nullable=True)  # AMC name from upload
+    scheme_name = Column(String(255),
                             nullable=False)  # Scheme Name from upload
-    last_updated = db.Column(db.DateTime,
+    last_updated = Column(DateTime,
                              default=datetime.utcnow,
                              onupdate=datetime.utcnow)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
     # Relationship to Fund
-    fund = db.relationship("Fund", backref="fund_holdings")
+    fund = relationship("Fund", backref="fund_holdings")
 
     __table_args__ = (
-        db.UniqueConstraint('isin', 'instrument_isin', name='uix_schemeisin_instrumentisin'),
+        UniqueConstraint('isin', 'instrument_isin', name='uix_schemeisin_instrumentisin'),
         CheckConstraint('percentage_to_nav >= 0',
                         name='check_percentage_to_nav'),
         CheckConstraint('percentage_to_nav <= 100',
@@ -183,19 +183,19 @@ class NavHistory(db.Model):
     """
     __tablename__ = 'mf_nav_history'
 
-    id = db.Column(db.Integer, primary_key=True)
-    isin = db.Column(db.String(12),
-                     db.ForeignKey('mf_fund.isin'),
+    id = Column(Integer, primary_key=True)
+    isin = Column(String(12),
+                     ForeignKey('mf_fund.isin'),
                      nullable=False)
-    date = db.Column(db.Date, nullable=False)  # Date of NAV
-    nav = db.Column(db.Float, nullable=False)  # NAV value
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime,
+    date = Column(Date, nullable=False)  # Date of NAV
+    nav = Column(Float, nullable=False)  # NAV value
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime,
                            default=datetime.utcnow,
                            onupdate=datetime.utcnow)
 
     # Relationship to Fund
-    fund = db.relationship("Fund", backref="nav_history")
+    fund = relationship("Fund", backref="nav_history")
 
     __table_args__ = (
         CheckConstraint('nav >= 0', name='check_nav'),
