@@ -52,3 +52,6 @@ navdata/returns/*.csv
 # Keep directory structure
 !navdata/historical_nav/.gitkeep
 !navdata/returns/.gitkeep
+
+#docker
+*.tar

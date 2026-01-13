@@ -1,4 +1,4 @@
-FROM python:3.9-slim
+FROM python:3.11-slim-bookworm
 
 # Install cron and required system dependencies
 RUN apt-get update && apt-get install -y \
@@ -15,7 +15,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Ensure scripts are executable
-RUN chmod +x scripts/daily_sync.sh scripts/historical_setup.sh
+# Fix line endings (CRLF -> LF) for Windows compatibility
+RUN sed -i 's/\r$//' entrypoint.sh scripts/*.sh && \
+    chmod +x entrypoint.sh scripts/*.sh
 
 # Setup Cron
 # Create a cron job file
@@ -31,6 +33,10 @@ RUN crontab /etc/cron.d/nav-cron
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
-# Run the command on container startup
-# -f: Foreground mode (don't daemonize) so container keeps running
-CMD ["cron", "-f"]
+# Copy entrypoint
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+
+# Default command
+ENTRYPOINT ["./entrypoint.sh"]
+CMD ["cron"]

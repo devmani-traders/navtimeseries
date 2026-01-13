@@ -84,6 +84,84 @@ class NavManager:
             
         return isin_map
 
+    def generate_master_list(self, output_path, keywords):
+        """
+        Generates a master list CSV by filtering NAVAll.txt for specific keywords.
+        Excludes schemes containing  e.g., "Direct Plan" or "IDCW".
+        
+        Args:
+            output_path (str): Path to save the generated CSV.
+            keywords (list): List of keywords to filter Scheme Names (e.g., ["Quant", "HDFC"]).
+        """
+        # Hardcoded exclusion list
+        EXCLUDE_KEYWORDS = ["Direct", "IDCW", "ETF", "Bonus Option"]
+
+        if not storage.exists(self.nav_all_file):
+            if not self.download_nav_all():
+                return False
+
+        logging.info(f"Generating master list for keywords '{keywords}' (excluding {EXCLUDE_KEYWORDS})...")
+        
+        data = []
+        try:
+            content = storage.read_text(self.nav_all_file)
+            for line in content.splitlines():
+                line = line.strip()
+                if not line or ";" not in line:
+                    continue
+                
+                # Format: Scheme Code;ISIN Div Payout/Growth;ISIN Div Reinv;Scheme Name;NAV;Date
+                parts = line.split(';')
+                if len(parts) >= 6:
+                    scheme_name = parts[3]
+                    
+                    # 1. Check Exclusion
+                    exclude = False
+                    for ex_kw in EXCLUDE_KEYWORDS:
+                        if ex_kw.lower() in scheme_name.lower():
+                            exclude = True
+                            break
+                    if exclude:
+                        continue
+
+                    # 2. Check Inclusion (Filter by keywords)
+                    match = False
+                    for kw in keywords:
+                        if kw.lower() in scheme_name.lower():
+                            match = True
+                            break
+                    
+                    if match:
+                        scheme_code = parts[0]
+                        isin_payout = parts[1]
+                        isin_reinv = parts[2]
+                        
+                        # Prefer Payout ISIN, fallback to Reinvestment ISIN
+                        isin = isin_payout if isin_payout and isin_payout != '-' else isin_reinv
+                        
+                        # Skip if no valid ISIN found
+                        if isin and isin != '-':
+                            data.append({
+                                'ISIN': isin,
+                                'Scheme Code': scheme_code,
+                                'Scheme Name': scheme_name
+                            })
+                            
+            if data:
+                df = pd.DataFrame(data)
+                # Ensure columns are in the expected order
+                df = df[['ISIN', 'Scheme Code', 'Scheme Name']]
+                storage.write_csv(df, output_path)
+                logging.info(f"Generated master list at {output_path} with {len(df)} records.")
+                return True
+            else:
+                logging.warning(f"No schemes found matching keywords '{keywords}'.")
+                return False
+                
+        except Exception as e:
+            logging.error(f"Error generating master list: {e}")
+            return False
+
     def update_master_list_with_codes(self, master_list_path):
         """Updates the master list CSV with Scheme Codes using NAVAll data."""
         try:
