@@ -57,7 +57,7 @@ def import_returns_data(df, existing_isins=None ,clear_existing=False):
 
             # Track statistics
             stats = {
-                'returns_created': 0,
+                'returns_upserted': 0,
                 'returns_updated': 0,
                 'funds_not_found': 0,
                 'total_rows_processed': len(df)
@@ -66,8 +66,20 @@ def import_returns_data(df, existing_isins=None ,clear_existing=False):
             # Get all valid fund ISINs for validation
             valid_fund_isins = existing_isins
 
+            # Get ISINs that already have returns data
+            try:
+                result = db.session.execute(text("SELECT isin FROM mf_returns"))
+                existing_return_isins = {row[0] for row in result}
+            except Exception as e:
+                logger.error(f"Error fetching existing return ISINs: {e}")
+                existing_return_isins = set()
+
             # Prepare records for bulk upsert
             returns_records = []
+            
+            # Pre-calculate stats
+            stats['returns_inserted'] = 0
+            stats['returns_updated'] = 0
 
             for _, row in df.iterrows():
                 isin = str(row['ISIN']).strip()
@@ -82,6 +94,14 @@ def import_returns_data(df, existing_isins=None ,clear_existing=False):
                     )
                     stats['funds_not_found'] += 1
                     continue
+
+                # Check if it's an update or insert
+                if isin in existing_return_isins:
+                    stats['returns_updated'] += 1
+                else:
+                    stats['returns_inserted'] += 1
+
+                # Create returns record
 
                 # Create returns record
                 returns_record = {
@@ -122,7 +142,8 @@ def import_returns_data(df, existing_isins=None ,clear_existing=False):
                     if not pd.isna(row.get('Inception Return')) else None,
                     'return_since_inception_carg':
                     float(row.get('Inception CAGR', 0))
-                    if not pd.isna(row.get('Inception CAGR')) else None
+                    if not pd.isna(row.get('Inception CAGR')) else None,
+                    'last_updated': datetime.utcnow()
                 }
                 returns_records.append(returns_record)
 
@@ -144,9 +165,10 @@ def import_returns_data(df, existing_isins=None ,clear_existing=False):
                               return_5y_carg=stmt.excluded.return_5y_carg,
                               return_10y_carg=stmt.excluded.return_10y_carg,
                               return_since_inception=stmt.excluded.return_since_inception,
-                              return_since_inception_carg=stmt.excluded.return_since_inception_carg))
+                              return_since_inception_carg=stmt.excluded.return_since_inception_carg,
+                              last_updated=datetime.utcnow()))
                 db.session.execute(stmt)
-                stats['returns_created'] = len(returns_records)
+                # Stats already calculated above
 
             # Commit all changes
             db.session.commit()
@@ -183,7 +205,7 @@ def import_nav_data_upsert(df, clear_existing=False, existing_isins=None, batch_
 
             # Track statistics
             stats = {
-                'nav_records_created': 0,
+                'nav_records_upserted': 0,
                 'total_rows_processed': len(df),
                 'batch_size_used': batch_size,
                 'missing_funds_skipped': 0
@@ -250,12 +272,12 @@ def import_nav_data_upsert(df, clear_existing=False, existing_isins=None, batch_
                         set_=dict(nav=stmt.excluded.nav)
                     )
                     db.session.execute(stmt)
-                    stats['nav_records_created'] += len(nav_records)
+                    stats['nav_records_upserted'] += len(nav_records)
                     
                 # Commit batch
                 db.session.commit()
 
-            logger.info(f"NAV import completed: {stats}")
+            logger.info(f"NAV import completed (upserted): {stats}")
 
             return stats
 
