@@ -10,6 +10,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from app.database.setup import create_app, db
 from app.database.models import Fund
 from app.services.nav_manager import NavManager
+from app.utils.storage import storage
 from app import config
 
 # Setup logging
@@ -98,7 +99,7 @@ def populate_master_from_db():
         df = df.sort_values('Scheme Name')
         
         output_path = config.ISIN_MASTER_LIST
-        df.to_csv(output_path, index=False)
+        storage.write_csv(df, output_path)
         logger.info(f"Successfully wrote {len(df)} records to {output_path}")
         
         # Check if we missed any

@@ -64,7 +64,7 @@ def main(master_list_path=None):
     results = calculator.compute_all_returns(df, config.HISTORICAL_NAV_DIR)
     
     if not results.empty:
-        results.to_csv(config.NAV_RETURNS_REPORT, index=False)
+        storage.write_csv(results, config.NAV_RETURNS_REPORT)
         print(f"Returns report saved to {config.NAV_RETURNS_REPORT}")
     else:
         print("No returns calculated.")

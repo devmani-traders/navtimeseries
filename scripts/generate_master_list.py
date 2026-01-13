@@ -9,10 +9,12 @@ from app.services.nav_manager import NavManager
 
 import argparse
 
+from app import config
+
 def main():
     parser = argparse.ArgumentParser(description="Generate ISIN master list from NAVAll.txt")
     parser.add_argument("keywords", nargs='+', help="Keywords to filter Scheme Names (e.g. Quant HDFC)")
-    parser.add_argument("-o", "--output", default="data/isin_master_list.csv", help="Output CSV file path (default: data/isin_master_list.csv)")
+    parser.add_argument("-o", "--output", default=config.ISIN_MASTER_LIST, help=f"Output CSV file path (default: {config.ISIN_MASTER_LIST})")
     
     args = parser.parse_args()
 

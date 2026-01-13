@@ -26,6 +26,11 @@ case "$1" in
         # Start cron in foreground
         cron -f
         ;;
+    "refresh-master")
+        echo "Refreshing ISIN Master List from Database..."
+        # This writes directly to GCS if USE_GCS=true (via storage abstraction)
+        python3 scripts/populate_master_from_db.py
+        ;;
     *)
         # Run arbitrary commands (e.g., bash)
         exec "$@"

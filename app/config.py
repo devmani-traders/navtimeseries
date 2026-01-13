@@ -25,7 +25,7 @@ AMFI_NAV_HISTORY_URL = "https://www.amfiindia.com/api/nav-history"
 YEARS_BACK = 10
 
 # Database
-DB_URL = 'postgresql://postgres:mutual%40fund%40pro12@34.57.196.130:5432/mutualfundpro'
+DB_URL = os.getenv('DB_URL')
 
 
 # Storage Configuration
