@@ -55,8 +55,7 @@ def populate_master_from_db():
     matched_data = []
     
     try:
-        with open(config.NAV_ALL_FILE, 'r') as f:
-            content = f.read()
+        content = storage.read_text(config.NAV_ALL_FILE)
             
         for line in content.splitlines():
             line = line.strip()

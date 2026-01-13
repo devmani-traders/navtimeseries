@@ -34,36 +34,68 @@ GCS_BUCKET_NAME=your-gcs-bucket-name
 # GOOGLE_APPLICATION_CREDENTIALS=/app/gcs-key.json
 ```
 
-### 3. Quick Start Commands
+### 3. Quick Start Commands (Run on VM)
 
-You can perform all key operations using the Docker image:
+You can perform all key operations using the Docker image. 
+*Note: We assume your config file on the VM is named `nav.env`.*
 
-#### Step 1: Build Image
+#### Step 1: Build Image (On Local Machine)
 ```bash
 docker build -t nav-pipeline .
 ```
 
 #### Step 2: One-Time Historical Setup
-Downloads 10+ years of history for all funds and populates the DB.
 *Run this once when you set up.*
+1.  **Download**: It checks GCS. If empty, it downloads 10 years of history and uploads to your GCS bucket.
+2.  **Sync**: It reads those files from GCS and bulk-inserts them into your DB.
+
+Run in background so it doesn't stop if you disconnect:
 ```bash
-docker run --rm --env-file .env nav-pipeline setup
+docker run -d --name nav-setup --env-file nav.env nav-pipeline setup
+```
+
+Watch the logs:
+```bash
+docker logs -f nav-setup
+```
+
+Once finished (Status: `Exited (0)`), remove the container:
+```bash
+docker rm nav-setup
 ```
 
 #### Step 3: Start Daily Sync (Daemon)
-Starts a background cron job that updates data every day at 18:00 UTC.
 *Keep this running forever.*
+Starts a background cron job that updates data every day at 18:00 UTC.
 ```bash
-docker run -d --name nav-daily-sync --env-file .env --restart unless-stopped nav-pipeline cron
+docker run -d --name nav-daily-sync --env-file nav.env --restart unless-stopped nav-pipeline cron
 ```
 
 #### Step 4: Refresh Master List
-If you added new funds to your Database, run this to update the pipeline's master list.
 *Run this whenever you add new funds to DB.*
+Refreshes the master list in GCS based on your Database funds.
 ```bash
-docker run --rm --env-file .env nav-pipeline refresh-master
+docker run --rm --env-file nav.env nav-pipeline refresh-master
 ```
 
+### 4. Monitoring & Logs
+
+**Check Daily Sync Logs (Cron Job)**
+Since the daily sync runs in the background, check the internal cron log:
+```bash
+docker exec nav-daily-sync tail -f /var/log/cron.log
+```
+
+**Check Historical Setup Logs**
+If the standard logs seem stuck, check the detailed internal log:
+```bash
+docker exec nav-setup sh -c "tail -f /app/logs/*.log"
+```
+
+**Check Container Status**
+```bash
+docker ps
+```
 ---
 
 ## 🛠️ Local Development (Manual)
