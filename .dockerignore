@@ -31,3 +31,9 @@ data/returns/
 # IDEs
 .vscode/
 .idea/
+
+# Large build artifacts (CRITICAL)
+*.tar
+*.zip
+*.gz
+*.rar
