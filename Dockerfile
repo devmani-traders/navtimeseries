@@ -21,8 +21,8 @@ RUN sed -i 's/\r$//' entrypoint.sh scripts/*.sh && \
 
 # Setup Cron
 # Create a cron job file
-# Run at 18:00 (6 PM) every day
-RUN echo "0 18 * * * cd /app && ./scripts/daily_sync.sh >> /var/log/cron.log 2>&1" > /etc/cron.d/nav-cron
+# Run at 20:00 UTC (1:30 AM IST)
+RUN echo "0 20 * * * cd /app && ./scripts/daily_sync.sh >> /var/log/cron.log 2>&1" > /etc/cron.d/nav-cron
 
 # Give execution rights on the cron job
 RUN chmod 0644 /etc/cron.d/nav-cron

@@ -65,7 +65,16 @@ def main(master_list_path=None):
     
     if not results.empty:
         storage.write_csv(results, config.NAV_RETURNS_REPORT)
+        
+        # Also save a dated copy for history
+        from datetime import datetime
+        date_str = datetime.now().strftime("%Y-%m-%d")
+        # Assuming regex replace for extension or just string manipulation
+        dated_filename = config.NAV_RETURNS_REPORT.replace(".csv", f"_{date_str}.csv")
+        storage.write_csv(results, dated_filename)
+        
         print(f"Returns report saved to {config.NAV_RETURNS_REPORT}")
+        print(f"Archived dated report to {dated_filename}")
     else:
         print("No returns calculated.")
 
